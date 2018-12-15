@@ -17,6 +17,16 @@ module.exports = {
     "no-undef": 0,
     indent: ["error", 2],
     quotes: ["error", "double"],
-    semi: ["error", "always"]
+    semi: ["error", "always"],
+    "vue/max-attributes-per-line": [
+      "error",
+      {
+        singleline: 4,
+        multiline: {
+          max: 4,
+          allowFirstLine: false
+        }
+      }
+    ]
   }
 };
