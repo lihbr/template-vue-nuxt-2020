@@ -37,14 +37,7 @@ export default {
       return this.href.match(regex) === null;
     },
     realTitle: function() {
-      return this.title || this.getSlotText();
-    }
-  },
-  methods: {
-    getSlotText() {
-      return this.$slots.default
-        .map(vnode => vnode.text || vnode.elm.innerText)
-        .join(" ");
+      return this.title || this.$slots.default[0].text || "";
     }
   }
 };
@@ -61,6 +54,3 @@ export default {
   @media screen and (max-width: tablet)
     padding 0 20px
 </style>
-
-
-/^([a-z0-9]*:|.{0})\/\/.*$/gmi
