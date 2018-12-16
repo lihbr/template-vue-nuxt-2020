@@ -1,17 +1,16 @@
 <template>
   <div class="container">
-    <slot />
+    <slot/>
   </div>
 </template>
 
 <style scoped lang="stylus">
 .container
-  display block
-  overflow hidden
-  padding 0 8vw
+  margin 0 auto
+  width calc(100% - 16vw)
 
   @media screen and (max-width: desktop)
-    padding 0 50px
+    width calc(100% - globalMargin * 4)
   @media screen and (max-width: tablet)
-    padding 0 20px
+    width calc(100% - globalMargin * 2)
 </style>
