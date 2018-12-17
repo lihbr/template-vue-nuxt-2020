@@ -7,10 +7,10 @@
 <style scoped lang="stylus">
 .container
   margin 0 auto
-  width calc(100% - 16vw)
+  width calc(100% - 24vw)
 
   @media screen and (max-width: desktop)
-    width calc(100% - globalMargin * 4)
+    width "calc(100% - %s * 4)" % globalMargin
   @media screen and (max-width: tablet)
-    width calc(100% - globalMargin * 2)
+    width "calc(100% - %s * 2)" % globalMargin
 </style>
