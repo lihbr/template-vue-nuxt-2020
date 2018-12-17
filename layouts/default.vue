@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="globalContainer">
     <main class="main">
       <nuxt/>
     </main>
@@ -19,9 +19,10 @@ html
   color black
   background white
 
-body
+.globalContainer
   min-height 100vh
   display flex
   flex-flow column nowrap
   justify-content space-between
+  overflow-x hidden
 </style>
