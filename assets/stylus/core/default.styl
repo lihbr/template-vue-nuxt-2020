@@ -1,3 +1,8 @@
+p, .text
+  fontsize(16px)
+  font-weight 300
+  line-height 1.6
+
 .centered
   text-align center
 
@@ -18,3 +23,14 @@ em, .italic
 
 a
   text-decoration none
+
+.fullWidth
+  width 100%
+
+.softHover
+  opacity .85
+  transition opacity .3s ease
+  will-change opacity
+
+  &:hover
+    opacity 1
