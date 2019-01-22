@@ -1,7 +1,7 @@
 {
-  "name": "h3-p2021-e09-maaf",
+  "name": "template-vue-nuxt",
   "version": "1.0.0",
-  "description": "A project about MAAF insurance",
+  "description": "A Nuxt.js starter pack to build app with Vue.js ",
   "author": "edhbr",
   "private": true,
   "scripts": {
