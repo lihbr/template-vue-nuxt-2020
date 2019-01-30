@@ -118,7 +118,7 @@ module.exports = {
   ** Server configuration
   */
   server: {
-    port: 8016,
+    port: process.env.PORT || 8000,
     host: "0.0.0.0"
   },
 
@@ -127,6 +127,6 @@ module.exports = {
   */
   env: {
     // api_url: process.env.API_URL,
-    pkg_name: pkg.name
+    pkg_name: process.env.NAME || pkg.name
   }
 };
