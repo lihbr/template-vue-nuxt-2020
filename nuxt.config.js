@@ -9,14 +9,18 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: process.env.APP_NAME || pkg.name,
     htmlAttrs: {
       lang: "en"
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description },
+      {
+        hid: "description",
+        name: "description",
+        content: process.env.APP_DESC || pkg.description
+      },
       { name: "msapplication-TileColor", content: "#2b5797" },
       { name: "theme-color", content: "#ffffff" }
     ],
@@ -127,6 +131,7 @@ module.exports = {
   */
   env: {
     // api_url: process.env.API_URL,
-    pkg_name: process.env.NAME || pkg.name
+    pkg_name: process.env.APP_NAME || pkg.name,
+    pkg_desc: process.env.APP_DESC || pkg.description
   }
 };
