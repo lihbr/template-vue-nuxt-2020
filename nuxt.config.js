@@ -1,5 +1,5 @@
 const pkg = require("./package");
-import { resolve } from "path";
+const { resolve } = require("path");
 require("dotenv").config();
 
 module.exports = {
@@ -122,8 +122,8 @@ module.exports = {
   ** Server configuration
   */
   server: {
-    port: process.env.PORT || 8000,
-    host: "0.0.0.0"
+    host: process.env.HOST || "127.0.0.1",
+    port: process.env.PORT || 3000
   },
 
   /*
@@ -131,7 +131,7 @@ module.exports = {
   */
   env: {
     // api_url: process.env.API_URL,
-    pkg_name: process.env.APP_NAME || pkg.name,
-    pkg_desc: process.env.APP_DESC || pkg.description
+    pkg_name: process.env.NAME || pkg.name,
+    pkg_desc: process.env.DESC || pkg.description
   }
 };
