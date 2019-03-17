@@ -1,4 +1,20 @@
-mobile = 600px // min-width 
-tablet = 900px // min-width
-desktop = 1200px // min-width
-desktopLarge = 1800px // min-width
+mobile = 600px
+tablet = 900px
+desktop = 1200px
+desktopLarge = 1800px
+
+.noMobile
+  @media screen and (max-width mobile)
+    display none
+
+.noTablet
+  @media screen and (max-width tablet)
+    display none
+
+.noDesktop
+  @media screen and (max-width desktop)
+    display none
+
+.noDesktopLarge
+  @media screen and (max-width desktopLarge)
+    display none

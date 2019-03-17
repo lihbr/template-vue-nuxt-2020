@@ -9,8 +9,8 @@
   margin 0 auto
   width calc(100% - 24vw)
 
-  @media screen and (max-width: desktop)
+  @media screen and (max-width desktop)
     width "calc(100% - %s * 4)" % globalMargin
-  @media screen and (max-width: tablet)
+  @media screen and (max-width tablet)
     width "calc(100% - %s * 2)" % globalMargin
 </style>
