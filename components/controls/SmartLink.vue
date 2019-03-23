@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     isRelative: function() {
-      const regex = /^([a-z0-9]*:|.{0})\/\/.*$/gim; // match if absolute
+      const regex = /^(([a-z0-9]*:|.{0})\/\/|mailto:).*$/gim; // match if absolute
       return this.href.match(regex) === null;
     },
     realTitle: function() {
