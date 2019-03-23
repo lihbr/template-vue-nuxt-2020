@@ -3,7 +3,9 @@
     <div class="wrapper">
       <h1>{{ code }}</h1>
       <h2>{{ error.message }}</h2>
-      <nuxt-link to="/">Home page</nuxt-link>
+      <nuxt-link to="/">
+        Home page
+      </nuxt-link>
     </div>
   </Container>
 </template>

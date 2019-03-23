@@ -1,7 +1,7 @@
 <template>
   <span class="smartLink">
     <nuxt-link v-if="isRelative" :to="href" :title="realTitle">
-      <slot/>
+      <slot />
     </nuxt-link>
     <a
       v-else
@@ -10,7 +10,7 @@
       :target="target === 'blank' ? '_blank' : ''"
       :rel="target === 'blank' ? 'noopener' : ''"
     >
-      <slot/>
+      <slot />
     </a>
   </span>
 </template>

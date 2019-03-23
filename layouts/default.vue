@@ -1,7 +1,7 @@
 <template>
   <div class="globalContainer">
     <main class="main">
-      <nuxt/>
+      <nuxt />
     </main>
   </div>
 </template>
