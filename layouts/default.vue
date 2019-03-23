@@ -19,7 +19,7 @@ html
   color black
   background white
 
-.globalContainer
+.main
   min-height 100vh
   display flex
   flex-flow column nowrap
