@@ -7,8 +7,8 @@
       v-else
       :href="href"
       :title="realTitle"
-      :target="target === 'blank' ? '_blank' : ''"
-      :rel="target === 'blank' ? 'noopener' : ''"
+      :target="target === 'blank' ? '_blank' : false"
+      :rel="target === 'blank' ? 'noopener' : false"
     >
       <slot />
     </a>
