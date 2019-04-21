@@ -2,6 +2,11 @@ const pkg = require("./package");
 const { resolve } = require("path");
 require("dotenv").config();
 
+const APP_NAME = process.env.APP_NAME || pkg.name;
+const APP_DESC = process.env.APP_DESC || pkg.description;
+const HOST = process.env.APP_HOST || "0.0.0.0";
+const PORT = process.env.APP_PORT || 3000;
+
 module.exports = {
   mode: "universal",
 
@@ -9,7 +14,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: process.env.APP_NAME || pkg.name,
+    title: APP_NAME,
     htmlAttrs: {
       lang: "en"
     },
@@ -22,7 +27,7 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: process.env.APP_DESC || pkg.description
+        content: APP_DESC
       },
       { name: "msapplication-TileColor", content: "#2b5797" },
       { name: "theme-color", content: "#ffffff" }
@@ -122,19 +127,19 @@ module.exports = {
   },
 
   /*
-  ** Server configuration
-  */
+   ** Server configuration
+   */
   server: {
-    host: process.env.HOST || "0.0.0.0",
-    port: process.env.PORT || 3000
+    host: APP_HOST,
+    port: APP_PORT
   },
 
   /*
-  ** Env
-  */
+   ** Env
+   */
   env: {
     // api_url: process.env.API_URL,
-    pkg_name: process.env.NAME || pkg.name,
-    pkg_desc: process.env.DESC || pkg.description
+    app_name: APP_NAME,
+    app_desc: APP_DESC
   }
 };
