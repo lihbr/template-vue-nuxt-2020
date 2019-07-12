@@ -42,3 +42,12 @@ export default {
   }
 };
 </script>
+
+<style lang="stylus" scoped>
+.smartLink a
+  display inherit
+  height inherit
+  align-items inherit
+  justify-content inherit
+  width inherit
+</style>
