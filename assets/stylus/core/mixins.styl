@@ -11,9 +11,25 @@ fontsize(value) {
 remify(value) { /* separate mixin, so it can be used elsewhere */
   u = unit(value);
 
-  if (u is 'px') {
-    return unit(value/16, 'rem');
+  if (u is "px") {
+    return unit(value/16, "rem");
   } else {
     return unit(value, u);
+  }
+}
+
+/*
+  This mixin can be used to set the object-fit:
+  objectfit(contain);
+  or object-fit and object-position:
+  objectfit(cover, top);
+*/
+objectfit(fit = fill, position = null) {
+    object-fit: fit;
+  if position {
+    object-position: position;
+    font-family: "object-fit: " + fit + "; object-position: " + position;
+  } else {
+    font-family: "object-fit: " + fit;
   }
 }
