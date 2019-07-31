@@ -17,46 +17,24 @@ export default {
       }
     };
   },
-  data() {
-    return {
-      whichBrowser: "",
-      isMobile: false,
-      isTouch: false
-    };
+  computed: {
+    whichBrowser() {
+      return this.$store.state.detect.browser;
+    },
+    isMobile() {
+      return this.$store.state.detect.mobile;
+    },
+    isTouch() {
+      return this.$store.state.detect.touch;
+    }
   },
   mounted() {
     /**
      * Default operations
      */
-    const isMobile = require("is-mobile");
-
-    const that = this;
-
+    this.$store.dispatch("detect/detect");
     // Object fit polyfill
     objectFitImages();
-
-    // Browser?
-    const browserDetection = new BrowserDectector();
-    this.whichBrowser = `is${browserDetection.browser[0].toUpperCase() +
-      browserDetection.browser.slice(1)}`;
-
-    // Mobile?
-    if (isMobile()) {
-      this.isMobile = true;
-    }
-
-    // Touch?
-    window.addEventListener(
-      "touchstart",
-      function onFirstTouch(e) {
-        e.stopPropagation();
-        console.log("touch");
-        that.isTouch = true;
-        window.removeEventListener("touchstart", onFirstTouch, false);
-      },
-      false
-    );
-
     // Force add classes once
     document.documentElement.classList.add(...this.getHtmlClass());
     /**
@@ -70,7 +48,6 @@ export default {
       this.whichBrowser && htmlClass.push(this.whichBrowser);
       this.isMobile && htmlClass.push("isMobile");
       this.isTouch && htmlClass.push("isTouch");
-      this.menuActive && htmlClass.push("menuActive");
 
       return htmlClass;
     }
