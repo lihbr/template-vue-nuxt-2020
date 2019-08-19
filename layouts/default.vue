@@ -55,7 +55,6 @@ export default {
 };
 </script>
 
-
 <style lang="stylus">
 html
   font-family mainFont
@@ -68,11 +67,4 @@ html
   box-sizing border-box
   color black
   background white
-
-.main
-  min-height 100vh
-  display flex
-  flex-flow column nowrap
-  justify-content space-between
-  overflow-x hidden
 </style>

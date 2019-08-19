@@ -114,4 +114,3 @@ const timingFunctions = {
 };
 
 export { rand, debounce, throttle, timingFunctions };
-

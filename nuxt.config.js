@@ -4,8 +4,9 @@ require("dotenv").config();
 
 const APP_NAME = process.env.APP_NAME || pkg.name;
 const APP_DESC = process.env.APP_DESC || pkg.description;
-const HOST = process.env.APP_HOST || "0.0.0.0";
-const PORT = process.env.APP_PORT || 3000;
+const APP_HOST = process.env.APP_HOST || "0.0.0.0";
+const APP_PORT = process.env.APP_PORT || 3000;
+const APP_URL = process.env.APP_URL || `${APP_HOST}:${APP_PORT}`;
 
 module.exports = {
   mode: "universal",
@@ -104,6 +105,15 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     // baseURL: process.env.API_URL
+  },
+
+  /*
+   ** Sitemap
+   */
+  sitemap: {
+    hostname: APP_URL,
+    gzip: true,
+    exclude: ["/admin/**"]
   },
 
   /*
