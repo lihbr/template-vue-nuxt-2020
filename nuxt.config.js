@@ -96,7 +96,7 @@ module.exports = {
     "cookie-universal-nuxt",
     [
       "nuxt-stylus-resources-loader",
-      resolve(__dirname, "assets/stylus/main.styl")
+      resolve(__dirname, "assets/stylus/core.styl")
     ]
   ],
   /*
