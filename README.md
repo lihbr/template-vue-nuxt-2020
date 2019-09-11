@@ -1,7 +1,5 @@
 # PROJECT_NAME
 
-This is a school project at [HETIC](https://www.hetic.net/)
-
 Visit site [here](PROJECT_LINK)!
 
 ## Build Setup
