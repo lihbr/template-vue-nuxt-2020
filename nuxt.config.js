@@ -1,3 +1,5 @@
+const path = require("path");
+
 const env = require("./config/env");
 const { head, routes } = require("./config");
 
@@ -38,7 +40,7 @@ module.exports = {
    ** Style resources
    */
   styleResources: {
-    sass: "~/assets/sass/style.sass"
+    sass: "~/assets/sass/core.sass"
   },
 
   /*
@@ -107,6 +109,26 @@ module.exports = {
           loader: "eslint-loader",
           exclude: /(node_modules)/
         });
+      }
+    },
+    extractCSS: true,
+    postcss: {
+      plugins: {
+        "postcss-import": {},
+        tailwindcss: path.resolve(__dirname, "./tailwind.config.js"),
+        autoprefixer: env.DEV ? false : {},
+        // prettier-ignore
+        "@fullhuman/postcss-purgecss": env.DEV
+          ? false
+          : {
+            content: [
+              "./pages/**/*.vue",
+              "./layouts/**/*.vue",
+              "./components/**/*.vue"
+            ],
+            whitelist: ["html", "body"],
+            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+          }
       }
     }
   }
