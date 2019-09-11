@@ -151,5 +151,12 @@ module.exports = {
     // api_url: process.env.API_URL,
     app_name: APP_NAME,
     app_desc: APP_DESC
-  }
+  },
+
+  /*
+   ** Render
+   */
+  render: {
+    ssr: false
+  },
 };
