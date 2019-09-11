@@ -14,4 +14,4 @@ export default {
 };
 </script>
 
-<style scoped lang="stylus"></style>
+<style lang="sass" scoped></style>

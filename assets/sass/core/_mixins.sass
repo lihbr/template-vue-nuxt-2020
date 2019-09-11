@@ -1,0 +1,26 @@
+=fontsize($value)
+  font-size: $value + px
+  font-size: ($value / 16) + rem
+
+=objectfit($fit: fill, $position: false)
+  object-fit: $fit
+  @if $position
+    font-family: "object-fit: " + $fit + "; object-position: " + $position;
+  @else
+    font-family: "object-fit: " + $fit;
+s
+=no($size)
+  @media screen and (max-width: $size)
+    display: none !important
+
+=themify($color, $reversed)
+  scrollbar-width: thin
+  -webkit-tap-highlight-color: rgba($color, .2)
+  scrollbar-color: $color transparent
+
+  body::-webkit-scrollbar
+    width: 6px
+
+  ::selection, ::-webkit-scrollbar-thumb
+      color: $reversed
+      background: $color

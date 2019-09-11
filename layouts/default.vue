@@ -18,14 +18,8 @@ export default {
     };
   },
   computed: {
-    whichBrowser() {
-      return this.$store.state.detect.browser;
-    },
-    isMobile() {
-      return this.$store.state.detect.mobile;
-    },
-    isTouch() {
-      return this.$store.state.detect.touch;
+    detect() {
+      return this.$store.state.detect;
     }
   },
   mounted() {
@@ -45,9 +39,9 @@ export default {
     getHtmlClass() {
       const htmlClass = [];
 
-      this.whichBrowser && htmlClass.push(this.whichBrowser);
-      this.isMobile && htmlClass.push("isMobile");
-      this.isTouch && htmlClass.push("isTouch");
+      this.detect.browser && htmlClass.push(this.detect.browser);
+      this.detect.isMobile && htmlClass.push("isMobile");
+      this.detect.isTouch && htmlClass.push("isTouch");
 
       return htmlClass;
     }
@@ -55,16 +49,16 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style lang="sass">
 html
-  font-family mainFont
-  font-size 16px
-  word-spacing 1px
-  -ms-text-size-adjust 100%
-  -webkit-text-size-adjust 100%
-  -moz-osx-font-smoothing grayscale
-  -webkit-font-smoothing antialiased
-  box-sizing border-box
-  color black
-  background white
+  font-family: $mainFont
+  font-size: 16px // don't change this!
+  word-spacing: 1px
+  -ms-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  box-sizing: border-box
+  color: $black
+  background: $white
 </style>

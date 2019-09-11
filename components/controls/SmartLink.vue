@@ -43,11 +43,11 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="sass" scoped>
 .smartLink a
-  display inherit
-  height inherit
-  align-items inherit
-  justify-content inherit
-  width inherit
+  display: inherit
+  height: inherit
+  align-items: inherit
+  justify-content: inherit
+  width: inherit
 </style>

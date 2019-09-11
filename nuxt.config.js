@@ -1,76 +1,13 @@
-const pkg = require("./package");
-const { resolve } = require("path");
-require("dotenv").config();
-
-const APP_NAME = process.env.APP_NAME || pkg.name;
-const APP_DESC = process.env.APP_DESC || pkg.description;
-const APP_HOST = process.env.APP_HOST || "0.0.0.0";
-const APP_PORT = process.env.APP_PORT || 3000;
-const APP_URL = process.env.APP_URL || `${APP_HOST}:${APP_PORT}`;
+const env = require("./config/env");
+const { head, routes } = require("./config");
 
 module.exports = {
   mode: "universal",
 
   /*
-   ** Headers of the page
+   ** Headers of the page, see in ./config
    */
-  head: {
-    title: APP_NAME,
-    htmlAttrs: {
-      lang: "en"
-    },
-    meta: [
-      { charset: "utf-8" },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1, user-scalable=no"
-      },
-      {
-        hid: "description",
-        name: "description",
-        content: APP_DESC
-      },
-      { name: "msapplication-TileColor", content: "#2b5797" },
-      { name: "theme-color", content: "#ffffff" }
-    ],
-    script: [
-      // {
-      //   src: SRC,
-      //   defer: "", // delete key to false
-      //   async: "", // delete key to false
-      //   body: true // in body if true
-      // }
-    ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "apple-touch-icon",
-        sizes: "180x180",
-        href: "/apple-touch-icon.png"
-      },
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "32x32",
-        href: "/favicon-32x32.png"
-      },
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "16x16",
-        href: "/favicon-16x16.png"
-      },
-      {
-        rel: "manifest",
-        href: "/site.webmanifest"
-      },
-      {
-        rel: "mask-icon",
-        href: "/safari-pinned-tab.svg",
-        color: "#5bbad5"
-      }
-    ]
-  },
+  head,
 
   /*
    ** Customize the progress-bar color
@@ -80,7 +17,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ["~/assets/vendor/css/reset.css", "~/assets/stylus/style.styl"],
+  css: ["~/assets/sass/style.sass"],
 
   /*
    ** Plugins to load before mounting the App
@@ -93,12 +30,17 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     "@nuxtjs/axios",
-    "cookie-universal-nuxt",
-    [
-      "nuxt-stylus-resources-loader",
-      resolve(__dirname, "assets/stylus/core.styl")
-    ]
+    "@nuxtjs/style-resources",
+    "cookie-universal-nuxt"
   ],
+
+  /*
+   ** Style resources
+   */
+  styleResources: {
+    sass: "~/assets/sass/style.sass"
+  },
+
   /*
    ** Axios module configuration
    */
@@ -111,9 +53,42 @@ module.exports = {
    ** Sitemap
    */
   sitemap: {
-    hostname: APP_URL,
+    hostname: env.APP_URL,
     gzip: true,
     exclude: ["/admin/**"]
+  },
+
+  /*
+   ** Env
+   */
+  env: {
+    // api_url: env.API_URL,
+    app_name: env.APP_NAME,
+    app_desc: env.APP_DESC,
+    dev_data: env.DEV ? routes : ""
+  },
+
+  /*
+   ** Generate
+   */
+  generate: {
+    routes,
+    fallback: true
+  },
+
+  /*
+   ** Server configuration
+   */
+  server: {
+    host: env.APP_HOST,
+    port: env.APP_PORT
+  },
+
+  /*
+   ** Render
+   */
+  render: {
+    ssr: false
   },
 
   /*
@@ -134,29 +109,5 @@ module.exports = {
         });
       }
     }
-  },
-
-  /*
-   ** Server configuration
-   */
-  server: {
-    host: APP_HOST,
-    port: APP_PORT
-  },
-
-  /*
-   ** Env
-   */
-  env: {
-    // api_url: process.env.API_URL,
-    app_name: APP_NAME,
-    app_desc: APP_DESC
-  },
-
-  /*
-   ** Render
-   */
-  render: {
-    ssr: false
-  },
+  }
 };

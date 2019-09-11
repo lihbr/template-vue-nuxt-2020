@@ -29,10 +29,10 @@ export default {
 };
 </script>
 
-<style scoped lang="stylus">
+<style lang="sass" scoped>
 .wrapper
-  margin 100px 0
+  margin: 100px 0
 
 a
-  text-decoration underline
+  text-decoration: underline
 </style>
