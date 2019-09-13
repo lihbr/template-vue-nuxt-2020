@@ -1,0 +1,53 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+  commit_messages:
+    create: ":sparkles: Create {{collection}} > {{slug}}"
+    update: ":pencil2: Update {{collection}} > {{slug}}"
+    delete: ":fire: Delete {{collection}} > {{slug}}"
+    uploadMedia: ":bento: Upload {{path}}"
+    deleteMedia: ":fire: Delete: {{path}}"
+  accept_roles: #optional - accepts all users if left out
+    - root
+
+publish_mode: editorial_workflow
+
+media_folder: static/assets/img/uploads # Media files will be stored in the repo under static/assets/img/uploads
+# public_folder: "/assets/img/uploads" # The src attribute for uploaded media will begin with /assets/img/uploads
+
+# back office
+site_url: https://SITE_URL.netlify.com
+display_url: https://SITE_URL.netlify.com
+logo_url: https://SITE_URL.netlify.com/_admin/admin_logo.svg
+
+# enable to display preview links
+show_preview_links: true
+
+# slug
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: _
+
+# collections
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    description: Basic blog posts
+    folder: ".content/posts/blog"
+    extension: json
+    format: json
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        required: true
+      - name: body
+        label: Body
+        widget: markdown
+        required: true
