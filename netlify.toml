@@ -5,7 +5,7 @@
   # Build command
   command = "yarn run generate"
   # Build directory
-  publish = "./dist/"
+  publish = "dist/"
   # Serverless Lambda functions
   functions = ".functions/"
 
