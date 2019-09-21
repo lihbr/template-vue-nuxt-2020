@@ -112,6 +112,12 @@ module.exports = {
       }
     },
     extractCSS: true,
+    loaders: {
+      sass: {
+        implementation: require("sass"),
+        fiber: require("fibers")
+      }
+    },
     postcss: {
       plugins: {
         "postcss-import": {},
