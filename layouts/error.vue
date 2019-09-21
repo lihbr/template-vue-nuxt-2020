@@ -1,13 +1,11 @@
 <template>
-  <Container>
-    <div class="wrapper">
-      <h1>{{ code }}</h1>
-      <h2>{{ error.message }}</h2>
-      <nuxt-link to="/">
-        Home page
-      </nuxt-link>
-    </div>
-  </Container>
+  <div class="wrapper">
+    <h1>{{ code }}</h1>
+    <h2>{{ error.message }}</h2>
+    <nuxt-link class="underline" to="/">
+      Home page
+    </nuxt-link>
+  </div>
 </template>
 
 <script>
@@ -29,10 +27,4 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-.wrapper
-  margin: 100px 0
-
-a
-  text-decoration: underline
-</style>
+<style lang="sass" scoped></style>

@@ -4,7 +4,7 @@ module.exports = {
   title: env.APP_NAME,
   htmlAttrs: {
     lang: env.APP_LANG,
-    class: "initialState initialState--loading"
+    class: ""
   },
   meta: [
     { charset: "utf-8" },

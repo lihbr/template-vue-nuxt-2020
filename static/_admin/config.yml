@@ -27,7 +27,7 @@ show_preview_links: true
 slug:
   encoding: ascii
   clean_accents: true
-  sanitize_replacement: _
+  sanitize_replacement: "-"
 
 # collections
 collections:

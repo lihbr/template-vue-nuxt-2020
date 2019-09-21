@@ -1,7 +1,7 @@
 const head = require("./head");
-const routes = "";
+const generate = require("./generate");
 
 module.exports = {
   head,
-  routes
+  generate
 };

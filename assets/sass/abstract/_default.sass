@@ -1,1 +1,23 @@
-// Nothing yet...
+.cover
+  +objectfit(cover)
+
+.contains
+  +objectfit(contains)
+
+strong
+  @apply font-bold
+
+.flex-center
+  @apply flex justify-center items-center
+
+.tr-opacity
+  transition: opacity $trDelay $trBezier
+  will-change: opacity
+
+.tr-transform
+  transition: transform $trDelay $trBezier
+  will-change: transform
+
+.tr-opacity-transform
+  transition: opacity $trDelay $trBezier, transform $trDelay $trBezier
+  will-change: opacity, transform

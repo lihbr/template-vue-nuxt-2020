@@ -5,22 +5,21 @@
 =objectfit($fit: fill, $position: false)
   object-fit: $fit
   @if $position
+    object-position: $position
     font-family: "object-fit: " + $fit + "; object-position: " + $position;
   @else
     font-family: "object-fit: " + $fit;
-s
-=no($size)
-  @media screen and (max-width: $size)
-    display: none !important
 
-=themify($color, $reversed)
+=themify()
   scrollbar-width: thin
-  -webkit-tap-highlight-color: rgba($color, .2)
-  scrollbar-color: $color transparent
 
   body::-webkit-scrollbar
     width: 6px
 
+=themifyColor($color, $reversed)
+  -webkit-tap-highlight-color: theme("colors." + $color + ".o-20")
+  scrollbar-color: theme("colors." + $color + ".default") transparent
+
   ::selection, ::-webkit-scrollbar-thumb
-      color: $reversed
-      background: $color
+    color: theme("colors." + $reversed + ".default")
+    background: theme("colors." + $color + ".default")

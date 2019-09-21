@@ -1,7 +1,7 @@
 const path = require("path");
 
 const env = require("./config/env");
-const { head, routes } = require("./config");
+const { head, generate } = require("./config");
 
 module.exports = {
   mode: "universal",
@@ -65,18 +65,18 @@ module.exports = {
    */
   env: {
     // api_url: env.API_URL,
+    dev: env.DEV,
+    commit_ref: env.COMMIT_REF,
     app_name: env.APP_NAME,
     app_desc: env.APP_DESC,
-    dev_data: env.DEV ? routes : ""
+    app_options: env.APP_OPTIONS,
+    app_data: generate.routes
   },
 
   /*
    ** Generate
    */
-  generate: {
-    routes,
-    fallback: true
-  },
+  generate,
 
   /*
    ** Server configuration
@@ -90,7 +90,7 @@ module.exports = {
    ** Render
    */
   render: {
-    ssr: false
+    ssr: !env.DEV
   },
 
   /*
@@ -122,11 +122,16 @@ module.exports = {
           ? false
           : {
             content: [
+              "./assets/sass/**/*.sass",
               "./pages/**/*.vue",
               "./layouts/**/*.vue",
-              "./components/**/*.vue"
+              "./components/**/*.vue",
+              "./plugins/**/*.js"
             ],
-            whitelist: ["html", "body"],
+            whitelist: ["body", "html", "nuxt-progress", "__nuxt", "__layout"],
+            whitelistPatterns: [
+              /.*-(enter|enter-active|enter-to|leave|leave-active|leave-to)/
+            ],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
           }
       }
