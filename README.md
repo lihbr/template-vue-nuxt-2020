@@ -1,6 +1,6 @@
-# PROJECT_NAME
+# template-vue-nuxt
 
-Visit site [here](PROJECT_LINK)!
+A Nuxt.js starter pack to build app with Vue.js
 
 ## Build Setup
 
