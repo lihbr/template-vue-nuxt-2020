@@ -57,7 +57,7 @@ module.exports = {
   sitemap: {
     hostname: env.APP_URL,
     gzip: true,
-    exclude: ["/admin/**"]
+    exclude: ["/_admin/**"]
   },
 
   /*
