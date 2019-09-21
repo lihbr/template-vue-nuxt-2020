@@ -20,3 +20,26 @@ $ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## Features
+
+### Development
+
+- ESLint (pre-commit hooked with Husky)
+- SASS
+
+### Utilities
+
+- Browser environment detection
+- Mouse wheel event
+- Netlify CMS
+- Object fit polyfill
+- Sitemap generation
+- Stats.js
+- Tailwindcss
+- Vuex store
+
+### Render
+
+- Markdown support
+- Syntax highlight
