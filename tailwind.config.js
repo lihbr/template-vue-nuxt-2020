@@ -110,6 +110,8 @@ module.exports = {
     // Accessible from transition-
     transitionDuration: {
       default: "1500ms",
+      eighth: "187ms",
+      quarter: "375ms",
       half: "750ms",
       double: "3000ms"
     },
