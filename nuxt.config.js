@@ -5,6 +5,7 @@ const { head, generate } = require("./config");
 
 module.exports = {
   mode: "universal",
+  srcDir: "src/",
 
   /*
    ** Headers of the page, see in ./config
