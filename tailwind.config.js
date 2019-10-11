@@ -1,3 +1,7 @@
+const Color = require("color");
+const col = 120;
+const baseDuration = 1500;
+
 module.exports = {
   prefix: "",
   important: false,
@@ -36,11 +40,15 @@ module.exports = {
       inherit: "inherit",
       black: {
         default: "#111111",
-        "o-20": "rgba(17, 17, 17, 0.2)"
+        "o-20": Color("#111111")
+          .alpha(0.2)
+          .rgb()
       },
       white: {
         default: "#fefefe",
-        "o-20": "rgba(254, 254, 254, 0.2)"
+        "o-20": Color("#fefefe")
+          .alpha(0.2)
+          .rgb()
       }
     },
     fontSize: {
@@ -62,6 +70,7 @@ module.exports = {
       "10xl": "5rem" //     80px
     },
     opacity: {
+      inherit: "inherit",
       "0": "0",
       "10": "0.1",
       "20": "0.2",
@@ -74,46 +83,37 @@ module.exports = {
       "90": "0.9",
       "100": "0.99" // prevent extra paint
     },
-    zIndex: {
-      "-1000": -1000,
-      "-100": -100,
-      "-50": -50,
-      "-20": -20,
-      "-10": -10,
-      "-5": -5,
-      "-4": -4,
-      "-3": -3,
-      "-2": -2,
-      "-1": -1,
-      "0": 0,
-      "1": 1,
-      "2": 2,
-      "3": 3,
-      "4": 4,
-      "5": 5,
-      "10": 10,
-      "20": 20,
-      "50": 50,
-      "100": 100,
-      "1000": 1000,
-      auto: "auto"
+    zIndex: () => {
+      const zIndex = {
+        auto: "auto",
+        "0": 0
+      };
+
+      // Generate negative and positive classes for each
+      [1000, 100, 50, 20, 10, 5, 4, 3, 2, 1].forEach(i => {
+        zIndex[`${i}`] = i;
+        zIndex[`-${i}`] = i * -1;
+      });
+
+      return zIndex;
     },
     // Acceccible from transition-
     transitionProperty: {
       default: "all",
       color: "color",
       bg: "background",
+      "width-height": ["width", "height"],
       opacity: "opacity",
       transform: "transform",
       "opacity-transform": ["opacity", "transform"]
     },
     // Accessible from transition-
     transitionDuration: {
-      default: "1500ms",
-      eighth: "187ms",
-      quarter: "375ms",
-      half: "750ms",
-      double: "3000ms"
+      default: `${baseDuration}ms`,
+      eighth: `${Math.floor(baseDuration / 8)}ms`,
+      quarter: `${Math.floor(baseDuration / 4)}ms`,
+      half: `${Math.floor(baseDuration / 2)}ms`,
+      double: `${baseDuration * 2}ms`
     },
     // Accessible from transition-delay-
     transitionDelay: theme => ({
@@ -152,39 +152,35 @@ module.exports = {
       "ease-in-out-back": "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
     },
     extend: {
-      spacing: {
-        inherit: "inherit",
-        col: "120px",
-        "col-1": "120px",
-        "col-2": "240px",
-        "col-3": "360px",
-        "col-4": "480px",
-        "col-5": "600px",
-        "col-6": "720px",
-        "col-7": "840px",
-        "col-8": "960px",
-        "col-9": "1080px",
-        "col-10": "1200px",
-        "col-11": "1320px",
-        "col-12": "1440px",
-        "10vw": "10vw",
-        "20vw": "20vw",
-        "30vw": "30vw",
-        "40vw": "40vw",
-        "50vw": "50vw",
-        "60vw": "60vw",
-        "70vw": "70vw",
-        "80vw": "80vw",
-        "90vw": "90vw",
-        "10vh": "10vh",
-        "20vh": "20vh",
-        "30vh": "30vh",
-        "40vh": "40vh",
-        "50vh": "50vh",
-        "60vh": "60vh",
-        "70vh": "70vh",
-        "80vh": "80vh",
-        "90vh": "90vh"
+      spacing: () => {
+        const spacing = {
+          inherit: "inherit",
+          col: `${col}px`,
+          "col-1": `${col}px`, // 120px
+          "col-2": `${col * 2}px`, // 240px
+          "col-3": `${col * 3}px`, // 360px
+          "col-4": `${col * 4}px`, // 480px
+          "col-5": `${col * 5}px`, // 600px
+          "col-6": `${col * 6}px`, // 720px
+          "col-7": `${col * 7}px`, // 840px
+          "col-8": `${col * 8}px`, // 960px
+          "col-9": `${col * 9}px`, // 1080px
+          "col-10": `${col * 10}px`, // 1200px
+          "col-11": `${col * 11}px`, // 1320px
+          "col-12": `${col * 12}px` // 1440px
+        };
+
+        for (let i = 1; i <= 12; i++) {
+          spacing[`-col-${i}`] = `${col * -i}px`;
+        }
+
+        for (let i = 1; i <= 20; i++) {
+          spacing[`${i * 5}vw`] = `${i * 5}vw`;
+          spacing[`${i * 5}vh`] = `${i * 5}vh`;
+          spacing[`${i * 5}%`] = `${i * 5}%`;
+        }
+
+        return spacing;
       },
       maxWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
       minWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
@@ -211,11 +207,11 @@ module.exports = {
       const objectFitUtilities = {
         ".object-cover": {
           objectFit: "cover",
-          fontFamily: '"object-fit: cover"'
+          fontFamily: '"object-fit: cover"' // eslint-disable-line
         },
         ".object-contain": {
           objectFit: "contain",
-          fontFamily: '"object-fit: contain"'
+          fontFamily: '"object-fit: contain"' // eslint-disable-line
         }
       };
       addUtilities(objectFitUtilities, {
@@ -230,6 +226,21 @@ module.exports = {
         }
       };
       addUtilities(flexUtilities, {
+        variants: ["responsive"]
+      });
+
+      const transformUtilities = {
+        ".transform-center": {
+          transform: "translate(-50%, -50%)"
+        },
+        ".transform-center-x": {
+          transform: "translate(-50%, 0)"
+        },
+        ".transform-center-y": {
+          transform: "translate(0, -50%)"
+        }
+      };
+      addUtilities(transformUtilities, {
         variants: ["responsive"]
       });
     }
