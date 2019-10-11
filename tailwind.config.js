@@ -36,11 +36,11 @@ module.exports = {
       inherit: "inherit",
       black: {
         default: "#111111",
-        "o-20": "rgb(17, 17, 17, 0.2)"
+        "o-20": "rgba(17, 17, 17, 0.2)"
       },
       white: {
         default: "#fefefe",
-        "o-20": "rgb(254, 254, 254, 0.2)"
+        "o-20": "rgba(254, 254, 254, 0.2)"
       }
     },
     fontSize: {
@@ -119,6 +119,7 @@ module.exports = {
     transitionDelay: theme => ({
       base: theme("transitionDuration.default"),
       ...theme("transitionDuration"),
+      none: "none",
       default: 0
     }),
     // Accessible from transition-
@@ -185,11 +186,11 @@ module.exports = {
         "80vh": "80vh",
         "90vh": "90vh"
       },
-      maxWidth: theme => theme("spacing"),
-      minWidth: theme => theme("spacing"),
-      height: theme => theme("width"),
-      minHeight: theme => theme("spacing"),
-      minHeight: theme => theme("spacing"),
+      maxWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
+      minWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
+      height: theme => ({ ...theme("width"), screen: "100vh" }),
+      maxHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
+      minHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
       lineHeight: {
         "0": 0
       }
@@ -210,11 +211,11 @@ module.exports = {
       const objectFitUtilities = {
         ".object-cover": {
           objectFit: "cover",
-          fontFamily: "\"object-fit: cover\""
+          fontFamily: '"object-fit: cover"'
         },
         ".object-contain": {
           objectFit: "contain",
-          fontFamily: "\"object-fit: contain\""
+          fontFamily: '"object-fit: contain"'
         }
       };
       addUtilities(objectFitUtilities, {
