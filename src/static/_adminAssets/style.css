@@ -24,6 +24,10 @@ aside a[href="#/collections/pages"] span::before {
 
 */
 
+aside a[href="#/collections/blog"] span::before {
+  content: "\f305";
+}
+
 div[class*="PreviewPaneContainer-ControlPaneContainer"] div[class*="ControlPaneContainer"] {
   margin-bottom: 50vh;
 }

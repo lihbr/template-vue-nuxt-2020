@@ -1,4 +1,5 @@
 const fs = require("fs");
+const consola = require("consola");
 const {
   glob,
   getFileName,
@@ -6,11 +7,12 @@ const {
   globContent,
   slugify
 } = require("./helpers");
-
 const env = require("./env");
+
+const logger = consola.withScope("nuxt:generate");
 
 const routes = [];
 
-console.info(routes.map(i => i.route));
+logger.info("Routes:\n", routes.map(i => i.route), "\n");
 
 module.exports = { routes, fallback: true };

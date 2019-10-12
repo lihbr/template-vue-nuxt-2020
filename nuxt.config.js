@@ -33,7 +33,15 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     "@nuxtjs/axios",
-    "@nuxtjs/style-resources"
+    "@nuxtjs/style-resources",
+    [
+      "~~/cms/nuxt.module",
+      {
+        entry: "./cms/index.js",
+        outputName: "index.js",
+        outputDir: "_adminBundle"
+      }
+    ]
   ],
 
   /*

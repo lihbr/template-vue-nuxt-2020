@@ -6,10 +6,6 @@
     <title>Content Manager</title>
 
     <!-- Include the styles for the Netlify CMS UI, after your own styles -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/netlify-cms@^2.9.7/dist/cms.css"
-    />
     <link rel="cms-config-url" type="text/yaml" href="../_admin/config.yml" />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <!-- Custom back office icons -->
@@ -17,32 +13,13 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"
     />
-    <link rel="stylesheet" href="/_admin/admin.css" />
+    <link rel="stylesheet" href="/_adminAssets/style.css" />
   </head>
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@^2.9.7/dist/netlify-cms.js"></script>
     <script>
       window.CMS_MANUAL_INIT = true;
-
-      // Usage with script tag
-      const { CMS, initCMS: init } = window;
-
-      init({
-        config: {
-          media_library: {
-            name: "cloudinary",
-            use_secure_url: true,
-            config: {
-              cloud_name: "",
-              api_key: 0
-            }
-          }
-        }
-      });
-
-      // Preview style
-      CMS.registerPreviewStyle("/_admin/preview.css");
     </script>
+    <script src="/_adminBundle/index.js"></script>
   </body>
 </html>
