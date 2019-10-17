@@ -2,16 +2,14 @@ const { resolve } = require("path");
 
 /* covered by nuxt */
 const { urlJoin } = require("@nuxt/common");
-const consola = require("consola");
 
-const { build, serve, generate } = require("./nuxt.hooks");
-
-const logger = consola.withScope("nuxt:netlify-cms");
+const logger = require("./logger");
+const { build, serve, generate } = require("./hooks");
 
 const DEFAULTS = {
   entry: "./cms/index.js",
   outputName: "index.js",
-  outputDir: "_adminAssets/"
+  outputDir: "_adminBundle/"
 };
 
 const createWebpackConfig = (name, nuxtOptions, moduleConfig) => {
@@ -48,16 +46,12 @@ const createWebpackConfig = (name, nuxtOptions, moduleConfig) => {
 
 const getConfig = (nuxtOptions, moduleOptions) => {
   const config = { ...DEFAULTS, ...moduleOptions };
-  config.outputDir = moduleOptions.outputDir
-    .replace(/\/?$/, "/")
-    .replace(/^\/?/, "");
+  config.outputDir = config.outputDir.replace(/\/?$/, "/").replace(/^\/?/, "");
   config.fsPath = resolve(
     nuxtOptions.buildDir,
     "dist",
     config.outputDir
   ).replace(/\/$/, "");
-
-  logger.info("Netlify CMS Webpack config:\n", config, "\n");
 
   return config;
 };
@@ -68,4 +62,7 @@ module.exports = function(moduleOptions) {
   build.call(this, config, createWebpackConfig);
   serve.call(this, config);
   generate.call(this, config);
+
+  logger.info("Netlify CMS config:\n", config);
+  logger.success("Netlify CMS module initialized\n");
 };

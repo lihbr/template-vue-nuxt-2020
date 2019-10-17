@@ -13,10 +13,10 @@ const webpackHotMiddleware = require("webpack-hot-middleware");
 const WebpackBar = require("webpackbar");
 const serveStatic = require("serve-static");
 
+const logger = require("./logger");
+
 const WEBPACK_CLIENT_COMPILER_NAME = "client";
 const WEBPACK_NETLIFY_COMPILER_NAME = "netlify-cms";
-
-const logger = consola.withScope("nuxt:netlify-cms");
 
 module.exports = {
   // Handle webpack build
@@ -33,7 +33,7 @@ module.exports = {
       webpackConfig.plugins.push(
         new WebpackBar({
           name: WEBPACK_NETLIFY_COMPILER_NAME,
-          color: "red",
+          color: "#00ad9f",
           reporters: ["basic", "fancy", "profile", "stats"],
           basic: !this.options.build.quiet && env.minimalCLI,
           fancy: !this.options.build.quiet && !env.minimalCLI,

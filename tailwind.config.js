@@ -155,7 +155,8 @@ module.exports = {
       spacing: () => {
         const spacing = {
           inherit: "inherit",
-          col: `${col}px`,
+          semicol: `${col * 0.5}px`, // 60px
+          col: `${col}px`, // 120px
           "col-1": `${col}px`, // 120px
           "col-2": `${col * 2}px`, // 240px
           "col-3": `${col * 3}px`, // 360px
@@ -177,7 +178,7 @@ module.exports = {
         for (let i = 1; i <= 20; i++) {
           spacing[`${i * 5}vw`] = `${i * 5}vw`;
           spacing[`${i * 5}vh`] = `${i * 5}vh`;
-          spacing[`${i * 5}%`] = `${i * 5}%`;
+          spacing[`${i * 5}p`] = `${i * 5}%`;
         }
 
         return spacing;

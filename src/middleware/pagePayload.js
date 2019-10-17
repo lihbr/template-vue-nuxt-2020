@@ -4,12 +4,12 @@ export default context => {
   if (context.payload) {
     data = context.payload;
   } else {
-    const content = process.env.app_data.find(
+    const content = process.env.APP_DATA.find(
       i => i.route === context.route.fullPath
     );
 
     if (!content) {
-      return context.error({ statusCode: 404, message: "Study not found!" });
+      return context.error({ statusCode: 404, message: "Page not found!" });
     }
 
     data = content.payload;
@@ -17,6 +17,6 @@ export default context => {
 
   context.pagePayload = {
     data,
-    options: process.env.app_options
+    options: process.env.APP_OPTIONS
   };
 };

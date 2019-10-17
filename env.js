@@ -1,7 +1,5 @@
-const pkg = require("../package");
+const pkg = require("./package");
 require("dotenv").config();
-
-const { globContent } = require("./helpers");
 
 const DEV = process.env.NODE_ENV === "development";
 const COMMIT_REF = process.env.COMMIT_REF
@@ -15,10 +13,7 @@ const APP_PORT = process.env.APP_PORT || 3000;
 const APP_URL = process.env.APP_URL || `http://${APP_HOST}:${APP_PORT}`;
 const APP_LANG = process.env.APP_LANG || "en";
 
-const APP_OPTIONS = {}; // globContent("/options"); // For netlify CMS
-
 module.exports = {
-  ...process.env,
   DEV,
   COMMIT_REF,
   APP_NAME,
@@ -26,6 +21,5 @@ module.exports = {
   APP_HOST,
   APP_PORT,
   APP_URL,
-  APP_LANG,
-  APP_OPTIONS
+  APP_LANG
 };

@@ -1,26 +1,35 @@
 const fs = require("fs");
-const _glob = require("glob");
+const { resolve, basename } = require("path");
+
+const globby = require("globby");
 const _slugify = require("slugify");
 _slugify.extend({ ".": "-" });
 
+const logger = require("./logger");
+
 /**
  * Get a files glob
- * @param {string} path - directory path
- * @param {string} pattern - glob pattern
  * @param {string} contentDir - base content directory
+ * @param {string} directory - directory path
+ * @param {string} pattern - glob pattern
  * @return {array} - glob
  */
-const glob = (path, pattern = "*.json", contentDir = ".content") => {
-  const directory = `${contentDir}${path}/`;
-  if (!fs.existsSync(directory)) {
-    throw new Error(`glob: directory: ${directory} not found`);
+const glob = async (contentDir, directory, pattern = "*.json") => {
+  const fullPath = resolve(contentDir, directory);
+
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`glob: directory: ${fullPath} not found`);
   }
 
-  const result = _glob.sync(`${directory}${pattern}`, { nodir: true });
+  const result = await globby(`${directory}/${pattern}`, {
+    cwd: contentDir,
+    absolute: true,
+    onlyFiles: true
+  });
 
   if (!result.length) {
-    console.warn(
-      `glob: no result found for given pattern: ${pattern} in directory: ${directory}`
+    logger.warn(
+      `No result found for given pattern: ${pattern} in directory: ${fullPath}`
     );
   }
   return result;
@@ -32,7 +41,7 @@ const glob = (path, pattern = "*.json", contentDir = ".content") => {
  * @return {string} - file name
  */
 const getFileName = (path = "") => {
-  return path.replace(/(\.content\/[\w-_]*\/|\.\w+$)/g, "");
+  return basename(path).replace(/\.\w+$/g, "");
 };
 
 /**
@@ -46,7 +55,7 @@ const readJson = path => {
   }
 
   if (!fs.existsSync(path)) {
-    throw new Error(`glob: directory: ${directory} not found`);
+    throw new Error(`glob: directory: ${path} not found`);
   }
 
   return JSON.parse(fs.readFileSync(path));
@@ -54,17 +63,17 @@ const readJson = path => {
 
 /**
  * Glob content from files under given path
- * @param {string} path - directory path
- * @param {string} pattern - glob pattern
  * @param {string} contentDir - base content directory
+ * @param {string} directory - directory path
+ * @param {string} pattern - glob pattern
  * @return {object} - files content
  */
-const globContent = (path, pattern, contentDir) => {
-  if (!path) {
-    throw new Error("gloContent: path argument is required");
+const globContent = async (contentDir, directory, pattern) => {
+  if (!directory) {
+    throw new Error("globContent: directory argument is required");
   }
 
-  const files = glob(path, pattern, contentDir);
+  const files = await glob(contentDir, directory, pattern);
   const content = {};
   files.forEach(file => {
     content[getFileName(file)] = readJson(file);

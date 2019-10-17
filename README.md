@@ -2,6 +2,13 @@
 
 A Nuxt.js starter pack to build app with Vue.js
 
+## TODO
+
+- Edit commit Netlify CMS
+- Switch to conventional commits
+- Add GTM module
+- Config Sitemap module
+
 ## Build Setup
 
 ```bash

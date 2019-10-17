@@ -1,16 +1,70 @@
-const path = require("path");
-
-const env = require("./config/env");
-const { head, generate } = require("./config");
+const env = require("./env");
 
 module.exports = {
+  /*
+   ** Application mode
+   */
   mode: "universal",
+
+  /*
+   ** Application directory
+   */
   srcDir: "src/",
 
   /*
    ** Headers of the page, see in ./config
    */
-  head,
+  head: {
+    title: env.APP_NAME,
+    htmlAttrs: {
+      lang: env.APP_LANG,
+      class: ""
+    },
+    meta: [
+      { charset: "utf-8" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, user-scalable=no"
+      },
+      {
+        hid: "description",
+        name: "description",
+        content: env.APP_DESC
+      },
+      { name: "msapplication-TileColor", content: "#da532c" },
+      { name: "theme-color", content: "#feeeee" }
+    ],
+    script: [],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32x32.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png"
+      },
+      {
+        rel: "manifest",
+        href: "/site.webmanifest"
+      },
+      {
+        rel: "mask-icon",
+        href: "/safari-pinned-tab.svg",
+        color: "#e84311"
+      }
+    ]
+  },
 
   /*
    ** Customize the progress-bar color
@@ -25,23 +79,26 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/globals.js"],
+  plugins: [{ ssr: false, src: "~/plugins/welcome" }],
 
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
-    "@nuxtjs/axios",
+  modules: [],
+
+  /*
+   ** Nuxt.js build modules
+   */
+  buildModules: [
+    "@nuxtjs/eslint-module",
+    "~/modules/build",
+    "~/modules/generate",
+    "~/modules/components",
+    "~/modules/tailwindcss",
+    "~/modules/netlify-cms",
     "@nuxtjs/style-resources",
-    [
-      "~~/cms/nuxt.module",
-      {
-        entry: "./cms/index.js",
-        outputName: "index.js",
-        outputDir: "_adminBundle"
-      }
-    ]
+    "@nuxtjs/netlify-files",
+    "nuxt-svg-loader"
   ],
 
   /*
@@ -52,39 +109,18 @@ module.exports = {
   },
 
   /*
-   ** Axios module configuration
-   */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: process.env.API_URL
-  },
-
-  /*
    ** Sitemap
    */
   sitemap: {
     hostname: env.APP_URL,
     gzip: true,
-    exclude: ["/_admin/**"]
+    exclude: ["/_admin/**", "/_adminAssets/**", "/_adminBundle/**"]
   },
 
   /*
    ** Env
    */
-  env: {
-    // api_url: env.API_URL,
-    dev: env.DEV,
-    commit_ref: env.COMMIT_REF,
-    app_name: env.APP_NAME,
-    app_desc: env.APP_DESC,
-    app_options: env.APP_OPTIONS,
-    app_data: generate.routes
-  },
-
-  /*
-   ** Generate
-   */
-  generate,
+  env,
 
   /*
    ** Server configuration
@@ -99,56 +135,5 @@ module.exports = {
    */
   render: {
     ssr: !env.DEV
-  },
-
-  /*
-   ** Build configuration
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: "pre",
-          test: /\.(js|vue)$/,
-          loader: "eslint-loader",
-          exclude: /(node_modules)/
-        });
-      }
-    },
-    extractCSS: true,
-    loaders: {
-      sass: {
-        implementation: require("sass"),
-        fiber: require("fibers")
-      }
-    },
-    postcss: {
-      plugins: {
-        "postcss-import": {},
-        tailwindcss: path.resolve(__dirname, "./tailwind.config.js"),
-        autoprefixer: env.DEV ? false : {},
-        // prettier-ignore
-        "@fullhuman/postcss-purgecss": env.DEV
-          ? false
-          : {
-            content: [
-              "./assets/sass/**/*.sass",
-              "./pages/**/*.vue",
-              "./layouts/**/*.vue",
-              "./components/**/*.vue",
-              "./plugins/**/*.js"
-            ],
-            whitelist: ["body", "html", "nuxt-progress", "__nuxt", "__layout"],
-            whitelistPatterns: [
-              /.*-(enter|enter-active|enter-to|leave|leave-active|leave-to)/
-            ],
-            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-          }
-      }
-    }
   }
 };
