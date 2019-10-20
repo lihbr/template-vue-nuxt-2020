@@ -14,6 +14,7 @@ const APP_URL = process.env.APP_URL || `http://${APP_HOST}:${APP_PORT}`;
 const APP_LANG = process.env.APP_LANG || "en";
 
 const GTM_ID = process.env.GTM_ID || "";
+const GTM_FRIENDLY = process.env.GTM_FRIENDLY || false;
 const GTM_DEV = process.env.GTM_DEV || false;
 
 module.exports = {
@@ -28,5 +29,6 @@ module.exports = {
   APP_LANG,
 
   GTM_ID,
+  GTM_FRIENDLY,
   GTM_DEV
 };

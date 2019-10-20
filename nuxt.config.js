@@ -104,6 +104,7 @@ module.exports = {
       {
         id: env.GTM_ID,
         pageTracking: true,
+        respectDoNotTrack: env.GTM_FRIENDLY,
         dev: env.GTM_DEV
       }
     ],
