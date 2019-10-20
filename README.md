@@ -4,9 +4,7 @@ A Nuxt.js starter pack to build app with Vue.js
 
 ## TODO
 
-- Edit commit Netlify CMS
-- Switch to conventional commits
-- Add GTM module
+- Add GTM module > https://github.com/nuxt-community/modules/tree/master/packages/google-tag-manager
 - Config Sitemap module
 
 ## Build Setup

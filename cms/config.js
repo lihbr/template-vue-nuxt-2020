@@ -4,11 +4,11 @@ const backend = {
   name: "git-gateway",
   branch: "master", // Branch to update (optional; defaults to master)
   commit_messages: {
-    create: ":sparkles: Create {{collection}} > {{slug}}",
-    update: ":pencil2: Update {{collection}} > {{slug}}",
-    delete: ":fire: Delete {{collection}} > {{slug}}",
-    uploadMedia: ":bento: Upload {{path}}",
-    deleteMedia: ":fire: Delete: {{path}}"
+    create: "docs(cms): create {{slug}} in {{collection}}",
+    update: "docs(cms): update {{slug}} from {{collection}}",
+    delete: "docs(cms): delete {{slug}} from {{collection}}",
+    uploadMedia: "docs(cms): upload {{path}}",
+    deleteMedia: "docs(cms): delete {{path}}"
   },
   accept_roles: ["root"] // Optional - accepts all users if left out
 };
