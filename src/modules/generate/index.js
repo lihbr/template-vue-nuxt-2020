@@ -22,7 +22,7 @@ const getRoutes = async contentDir => {
 module.exports = async function(moduleOptions) {
   const contentDir = resolve(this.options.rootDir, "./content");
 
-  const APP_OPTIONS = await globContent(contentDir, "./options");
+  const APP_SETTINGS = await globContent(contentDir, "./settings");
 
   const routes = await getRoutes(contentDir);
 
@@ -37,9 +37,9 @@ module.exports = async function(moduleOptions) {
   if (this.options.dev) {
     this.options.env.APP_DATA = routes;
   }
-  this.options.env.APP_OPTIONS = APP_OPTIONS;
+  this.options.env.APP_SETTINGS = APP_SETTINGS;
 
   logger.info("Routes:\n", routes.map(i => i.route || i), "\n");
-  logger.info("APP_OPTIONS:\n", this.options.env.APP_OPTIONS);
+  logger.info("APP_SETTINGS:\n", this.options.env.APP_SETTINGS);
   logger.success("Generate module initialized\n");
 };
