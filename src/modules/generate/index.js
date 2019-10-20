@@ -39,7 +39,7 @@ module.exports = async function(moduleOptions) {
   }
   this.options.env.APP_OPTIONS = APP_OPTIONS;
 
-  logger.info("Routes:\n", routes.map(i => i.route), "\n");
+  logger.info("Routes:\n", routes.map(i => i.route || i), "\n");
   logger.info("APP_OPTIONS:\n", this.options.env.APP_OPTIONS);
   logger.success("Generate module initialized\n");
 };

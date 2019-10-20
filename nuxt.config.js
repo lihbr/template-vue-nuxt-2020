@@ -98,6 +98,7 @@ module.exports = {
     "~/modules/netlify-cms",
     "@nuxtjs/style-resources",
     "@nuxtjs/netlify-files",
+    "@nuxtjs/sitemap",
     [
       "@nuxtjs/google-tag-manager",
       {
