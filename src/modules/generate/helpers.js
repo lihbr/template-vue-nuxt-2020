@@ -18,7 +18,7 @@ const glob = async (contentDir, directory, pattern = "*.json") => {
   const fullPath = resolve(contentDir, directory);
 
   if (!fs.existsSync(fullPath)) {
-    throw new Error(`glob: directory: ${fullPath} not found`);
+    throw new Error(`glob: directory: "${fullPath}" not found`);
   }
 
   const result = await globby(`${directory}/${pattern}`, {
@@ -29,7 +29,7 @@ const glob = async (contentDir, directory, pattern = "*.json") => {
 
   if (!result.length) {
     logger.warn(
-      `No result found for given pattern: ${pattern} in directory: ${fullPath}`
+      `No result found for given pattern: "${pattern}" in directory: "${fullPath}"`
     );
   }
   return result;
@@ -55,7 +55,7 @@ const readJson = path => {
   }
 
   if (!fs.existsSync(path)) {
-    throw new Error(`glob: directory: ${path} not found`);
+    throw new Error(`glob: directory: "${path}" not found`);
   }
 
   return JSON.parse(fs.readFileSync(path));
