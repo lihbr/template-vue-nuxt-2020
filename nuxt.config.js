@@ -98,6 +98,14 @@ module.exports = {
     "~/modules/netlify-cms",
     "@nuxtjs/style-resources",
     "@nuxtjs/netlify-files",
+    [
+      "@nuxtjs/google-tag-manager",
+      {
+        id: env.GTM_ID,
+        pageTracking: true,
+        dev: env.GTM_DEV
+      }
+    ],
     "nuxt-svg-loader"
   ],
 

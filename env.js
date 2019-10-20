@@ -13,13 +13,20 @@ const APP_PORT = process.env.APP_PORT || 3000;
 const APP_URL = process.env.APP_URL || `http://${APP_HOST}:${APP_PORT}`;
 const APP_LANG = process.env.APP_LANG || "en";
 
+const GTM_ID = process.env.GTM_ID || "";
+const GTM_DEV = process.env.GTM_DEV || false;
+
 module.exports = {
   DEV,
   COMMIT_REF,
+
   APP_NAME,
   APP_DESC,
   APP_HOST,
   APP_PORT,
   APP_URL,
-  APP_LANG
+  APP_LANG,
+
+  GTM_ID,
+  GTM_DEV
 };
