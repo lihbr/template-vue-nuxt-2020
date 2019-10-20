@@ -97,8 +97,8 @@ module.exports = {
     "~/modules/tailwindcss",
     "~/modules/netlify-cms",
     "@nuxtjs/style-resources",
-    "@nuxtjs/netlify-files",
     "@nuxtjs/sitemap",
+    ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
     [
       "@nuxtjs/google-tag-manager",
       {
