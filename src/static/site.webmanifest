@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "lihbr",
+    "short_name": "lihbr",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#b91d47",
+    "background_color": "#b91d47",
+    "start_url": "https://lihbr.fr",
     "display": "standalone"
 }
