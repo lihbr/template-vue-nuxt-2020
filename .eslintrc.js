@@ -15,7 +15,7 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-undef": 0,
-    indent: ["error", 2],
+    indent: ["error", 2, { SwitchCase: 1 }],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "vue/max-attributes-per-line": [
@@ -37,7 +37,8 @@ module.exports = {
           component: "any"
         }
       }
-    ]
+    ],
+    "vue/component-name-in-template-casing": ["error", "kebab-case"]
   },
   overrides: [
     {
