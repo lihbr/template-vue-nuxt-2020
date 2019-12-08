@@ -139,7 +139,7 @@ module.exports = {
       "ease-out-cubic": "cubic-bezier(0.215, 0.61, 0.355, 1)",
       "ease-out-quart": "cubic-bezier(0.165, 0.84, 0.44, 1)",
       "ease-out-quint": "cubic-bezier(0.23, 1, 0.32, 1)",
-      "ease-out--expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+      "ease-out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
       "ease-out-circ": "cubic-bezier(0.075, 0.82, 0.165, 1)",
       "ease-out-back": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       "ease-in-out-sine": "cubic-bezier(0.445, 0.05, 0.55, 0.95)",
