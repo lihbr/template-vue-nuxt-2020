@@ -7,7 +7,7 @@
   # Build directory
   publish = "dist/"
   # Serverless Lambda functions
-  functions = ".functions/"
+  functions = "functions/"
 
 # Post processing configuration
 [build.processing]
@@ -40,6 +40,12 @@
 
 [context.branch-deploy.processing]
   skip_processing = true
+
+[[redirects]]
+  from = "/api/v1/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
 
 # [[redirects]]
 #   from = "https://www.example.com/*"
