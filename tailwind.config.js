@@ -1,6 +1,19 @@
 const Color = require("color");
+
+/**
+ * Start generic project config
+ */
 const col = 120;
 const baseDuration = 1500;
+
+const colors = {
+  black: "#111111",
+  white: "#fefefe"
+};
+const colorOpacityVariants = [20];
+/**
+ * End generic project config
+ */
 
 module.exports = {
   prefix: "",
@@ -35,21 +48,29 @@ module.exports = {
         "monospace"
       ]
     },
-    colors: {
-      none: "none",
-      inherit: "inherit",
-      black: {
-        default: "#111111",
-        "o-20": Color("#111111")
-          .alpha(0.2)
-          .rgb()
-      },
-      white: {
-        default: "#fefefe",
-        "o-20": Color("#fefefe")
-          .alpha(0.2)
-          .rgb()
+    colors: () => {
+      const finalColors = {
+        none: "none",
+        inherit: "inherit"
+      };
+
+      for (const color in colors) {
+        const value = colors[color];
+
+        const colorObject = {
+          default: value
+        };
+
+        for (const opacity of colorOpacityVariants) {
+          colorObject[`o-${opacity}`] = Color(value)
+            .alpha(opacity / 100)
+            .rgb();
+        }
+
+        finalColors[color] = colorObject;
       }
+
+      return finalColors;
     },
     fontSize: {
       "3xs": "0.5rem", //   8px
@@ -183,6 +204,7 @@ module.exports = {
 
         return spacing;
       },
+      inset: theme => theme("spacing"),
       maxWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
       minWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
       height: theme => ({ ...theme("width"), screen: "100vh" }),
