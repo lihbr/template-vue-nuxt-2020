@@ -99,7 +99,6 @@ module.exports = async () => {
       "~/modules/generate",
       "~/modules/components",
       "~/modules/tailwindcss",
-      "~/modules/netlify-cms",
       "@nuxtjs/style-resources",
       "@nuxtjs/sitemap",
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
@@ -128,7 +127,7 @@ module.exports = async () => {
     sitemap: {
       hostname: env.APP_URL,
       gzip: true,
-      exclude: ["/_admin/**", "/_adminAssets/**", "/_adminBundle/**"]
+      exclude: []
     },
 
     /*
