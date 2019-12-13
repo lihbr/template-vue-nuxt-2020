@@ -2,6 +2,10 @@ const pkg = require("./package");
 require("dotenv").config();
 
 const config = async () => {
+  // Getting global content from CMS
+  const CMS_CONTENT = {}; // TODO: Get content from CMS
+
+  // Defining site general variables
   const DEV = process.env.NODE_ENV === "development";
   const COMMIT_REF = process.env.COMMIT_REF
     ? process.env.COMMIT_REF
@@ -31,7 +35,9 @@ const config = async () => {
 
     GTM_ID,
     GTM_FRIENDLY,
-    GTM_DEV
+    GTM_DEV,
+
+    CMS_CONTENT
   };
 };
 
