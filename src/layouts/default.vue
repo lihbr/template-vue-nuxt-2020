@@ -22,6 +22,9 @@ export default {
       return this.$store.state.detect;
     }
   },
+  created() {
+    this.$store.dispatch("init");
+  },
   mounted() {
     /**
      * Default operations
