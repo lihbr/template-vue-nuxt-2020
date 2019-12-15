@@ -1,45 +1,22 @@
-const { resolve } = require("path");
-
-const { globContent, slugify } = require("./helpers");
-
 const logger = require("./logger");
 const generationStatistics = require("./generationStatistics");
 
-const getRoutes = async contentDir => {
-  const routes = [];
-
-  // const posts = await globContent(contentDir, "./posts/blog");
-  // for (const slug in posts) {
-  //   routes.push({
-  //     route: `/post/${slug}`,
-  //     payload: posts[slug]
-  //   });
-  // }
-
-  return routes;
-};
-
 module.exports = async function(moduleOptions) {
-  const contentDir = resolve(this.options.rootDir, "./content");
-
-  const APP_SETTINGS = await globContent(contentDir, "./settings");
-
-  const routes = await getRoutes(contentDir);
+  // Getting global content from CMS
+  const APP_ROUTES = ["/"]; // TODO: Get routes from CMS
 
   this.nuxt.hook("generate:before", (nuxt, generateOptions) => {
     generateOptions.fallback = "404.html";
-    generateOptions.routes.push(...routes);
+    generateOptions.routes.push(...APP_ROUTES);
 
     // Insert generation statistics
     generationStatistics.add.call(this);
   });
 
   if (this.options.dev) {
-    this.options.env.APP_DATA = routes;
+    this.options.env.APP_ROUTES = APP_ROUTES;
   }
-  this.options.env.APP_SETTINGS = APP_SETTINGS;
 
-  logger.info("Routes:\n", routes.map(i => i.route || i), "\n");
-  logger.info("APP_SETTINGS:\n", this.options.env.APP_SETTINGS);
+  logger.info("Routes:\n", APP_ROUTES.map(i => i.route || i));
   logger.success("Generate module initialized\n");
 };
