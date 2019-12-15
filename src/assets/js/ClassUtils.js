@@ -7,8 +7,10 @@ export default class ClassUtils {
    * @param {string} name - child class name
    * @param {boolean} debug - debug mode
    */
-  constructor(name, debug = false) {
-    debug && console.clear();
+  constructor(name, debug) {
+    if (typeof debug === "undefined") {
+      debug = process && process.env && process.env.NODE_ENV === "development";
+    }
 
     this.__name = name;
     this.__debug = debug;
@@ -38,7 +40,7 @@ export default class ClassUtils {
    * @param {string} msg - message
    * @param {object} info - additionnal info
    */
-  commitError(msg, info = {}) {
+  _commitError(msg, info = {}) {
     this._commit("error", msg, info);
   }
 
@@ -47,7 +49,7 @@ export default class ClassUtils {
    * @param {string} msg - message
    * @param {object} info - additionnal info
    */
-  commitWarning(msg, info = {}) {
+  _commitWarning(msg, info = {}) {
     this._commit("warn", msg, info);
   }
 
@@ -56,7 +58,7 @@ export default class ClassUtils {
    * @param {string} msg - message
    * @param {object} info - additionnal info
    */
-  commitInfo(msg, info = {}) {
+  _commitInfo(msg, info = {}) {
     this._commit("info", msg, info);
   }
 
@@ -64,7 +66,7 @@ export default class ClassUtils {
    * Return errors
    * @return {object}
    */
-  getErrors() {
+  _getErrors() {
     return {
       last: this._errors[this._errors.length - 1],
       all: this._errors
@@ -75,7 +77,7 @@ export default class ClassUtils {
    * Return warnings
    * @return {object}
    */
-  getWarnings() {
+  _getWarnings() {
     return {
       last: this._warns[this._warns.length - 1],
       all: this._warns
@@ -86,7 +88,7 @@ export default class ClassUtils {
    * Return infos
    * @return {object}
    */
-  getInfos() {
+  _getInfos() {
     return {
       last: this._infos[this._infos.length - 1],
       all: this._infos
