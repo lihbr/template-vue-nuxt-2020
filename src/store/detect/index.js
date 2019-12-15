@@ -1,4 +1,4 @@
-import BrowserDectector from "~/assets/js/BrowserDetector";
+import BrowserDetector from "~/assets/js/BrowserDetector";
 
 export const state = () => ({
   browser: "",
@@ -23,7 +23,7 @@ export const actions = {
     const isMobile = require("is-mobile");
 
     // Browser?
-    const browserDetection = new BrowserDectector();
+    const browserDetection = new BrowserDetector();
     commit("setBrowser", browserDetection.browser);
 
     // Mobile?

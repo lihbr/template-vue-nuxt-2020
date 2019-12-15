@@ -18,7 +18,6 @@ module.exports = function(moduleOptions) {
     );
 
     // Production only
-
     if (!this.options.dev) {
       // Autoprefixer
       this.options.build.postcss.plugins["autoprefixer"] = {};
