@@ -1,0 +1,8 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /api/
+Disallow: /.netlify/
+
+Sitemap: https://example.com/sitemap.xml # TODO: replace with real site domain
