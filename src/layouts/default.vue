@@ -1,5 +1,5 @@
 <template>
-  <div class="globalContainer">
+  <div class="__layout__default">
     <main class="main">
       <nuxt />
     </main>
