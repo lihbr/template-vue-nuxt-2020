@@ -50,7 +50,7 @@ module.exports = {
     },
     colors: () => {
       const finalColors = {
-        none: "none",
+        none: "transparent",
         inherit: "inherit"
       };
 
@@ -64,7 +64,8 @@ module.exports = {
         for (const opacity of colorOpacityVariants) {
           colorObject[`o-${opacity}`] = Color(value)
             .alpha(opacity / 100)
-            .rgb();
+            .rgb()
+            .toString();
         }
 
         finalColors[color] = colorObject;
