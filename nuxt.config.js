@@ -18,8 +18,13 @@ module.exports = async () => {
      ** Headers of the page, see in ./config
      */
     head: {
-      title: env.APP_NAME,
-      titleTemplate: `%s - ${env.APP_NAME}`,
+      titleTemplate: pageTitle => {
+        if (pageTitle && pageTitle.trim()) {
+          return `${pageTitle} - ${process.env.APP_NAME}`;
+        } else {
+          return process.env.APP_NAME;
+        }
+      },
       htmlAttrs: {
         lang: env.APP_LANG,
         class: ""
