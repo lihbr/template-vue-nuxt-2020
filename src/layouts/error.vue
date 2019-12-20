@@ -2,9 +2,9 @@
   <div class="wrapper">
     <h1>{{ code }}</h1>
     <h2>{{ error.message }}</h2>
-    <nuxt-link class="underline" to="/">
+    <smart-link class="underline" to="/">
       Home page
-    </nuxt-link>
+    </smart-link>
   </div>
 </template>
 
