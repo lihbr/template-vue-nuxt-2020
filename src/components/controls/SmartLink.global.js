@@ -1,3 +1,5 @@
+const logger = require("consola").withScope("lihbr:smart-link");
+
 import { mergeData } from "vue-functional-data-merge";
 
 const FRAMEWORK_LINK = "nuxt-link";
@@ -5,15 +7,28 @@ const FRAMEWORK_LINK = "nuxt-link";
 export default {
   functional: true,
   props: {
+    // Target
     href: {
       type: String,
       default: () => ""
     },
+    // Link title
     title: {
       type: String,
       default: () => ""
     },
+    // Open target on a new page
     blank: {
+      type: Boolean,
+      default: false
+    },
+    // Force an external link
+    external: {
+      type: Boolean,
+      default: false
+    },
+    // Force an internal link
+    internal: {
       type: Boolean,
       default: false
     }
@@ -21,12 +36,27 @@ export default {
   render(createElement, { props, data, slots }) {
     const $slots = slots();
 
-    const isRelative = (() => {
-      const regex = /^(([a-z0-9]*:|.{0})\/\/|mailto:|\.\/assets).*$/gim; // match if absolute
-      return props.href.match(regex) === null;
+    const isInternal = (() => {
+      if (props.external && props.internal) {
+        logger.warn(
+          'props "external" and "internal" are both true and conflicting with each other, giving priority to "external"' // eslint-disable-line
+        );
+        return false;
+      }
+
+      if (props.external) {
+        return false;
+      }
+
+      if (props.internal) {
+        return true;
+      }
+
+      const regex = /^(([a-z0-9]*:|.{0})\/\/|mailto:|\.\/assets).*$/gim; // match external links
+      return !regex.test(props.href);
     })();
 
-    const realTitle = (() => {
+    const titleAttribute = (() => {
       if (props.title) {
         return props.title;
       } else if (
@@ -40,9 +70,9 @@ export default {
       }
     })();
 
-    const tag = (() => {
+    const htmlTag = (() => {
       if (props.href) {
-        if (isRelative) {
+        if (isInternal && !props.blank) {
           return FRAMEWORK_LINK;
         } else {
           return "a";
@@ -53,27 +83,28 @@ export default {
     })();
 
     let on = {};
-    if (tag !== FRAMEWORK_LINK) {
+    if (htmlTag !== FRAMEWORK_LINK) {
       on = { ...data.nativeOn };
       delete data.nativeOn;
     }
 
-    const attrs = { ...data.attrs };
+    const attrs = {
+      ...data.attrs,
+      title: titleAttribute
+    };
 
-    if (tag === FRAMEWORK_LINK) {
+    if (htmlTag === FRAMEWORK_LINK) {
       attrs.to = props.href;
-      attrs.title = realTitle;
-    } else if (tag === "a") {
+    } else if (htmlTag === "a") {
       attrs.href = props.href;
       if (props.blank) {
         attrs.target = "_blank";
         attrs.rel = "noopener";
-        attrs.title = realTitle;
       }
     }
 
     return createElement(
-      tag,
+      htmlTag,
       mergeData(data, { class: "smartLink", attrs, on }),
       $slots.default
     );
