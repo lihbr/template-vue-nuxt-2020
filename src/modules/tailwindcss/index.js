@@ -34,6 +34,7 @@ module.exports = function(moduleOptions) {
           path.resolve(this.options.srcDir, "./components/**/*.js"),
           path.resolve(this.options.srcDir, "./plugins/**/*.js")
         ],
+        whitelist: ["body", "html", "nuxt-progress", "__nuxt", "__layout"],
         whitelistPatterns: [
           /.*-(enter|enter-active|enter-to|leave|leave-active|leave-to)/
         ],
