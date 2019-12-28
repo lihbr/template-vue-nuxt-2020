@@ -9,7 +9,7 @@ export default class ClassUtils {
    */
   constructor(name, debug) {
     if (typeof debug === "undefined") {
-      debug = process && process.env && process.env.NODE_ENV === "development";
+      debug = process.env.NODE_ENV === "development";
     }
 
     this.__name = name;
@@ -32,7 +32,13 @@ export default class ClassUtils {
       time: Date.now()
     };
     this[`__${type}s`].push(commit);
-    this.__debug && console[type](commit.msg);
+    if (this.__debug || ["error"].includes(type)) {
+      if (info) {
+        console[type](commit.msg, commit.info);
+      } else {
+        console[type](commit.msg);
+      }
+    }
   }
 
   /**
@@ -40,7 +46,7 @@ export default class ClassUtils {
    * @param {string} msg - message
    * @param {object} info - additionnal info
    */
-  _commitError(msg, info = {}) {
+  _commitError(msg, info) {
     this._commit("error", msg, info);
   }
 
@@ -49,7 +55,7 @@ export default class ClassUtils {
    * @param {string} msg - message
    * @param {object} info - additionnal info
    */
-  _commitWarning(msg, info = {}) {
+  _commitWarning(msg, info) {
     this._commit("warn", msg, info);
   }
 
@@ -58,7 +64,7 @@ export default class ClassUtils {
    * @param {string} msg - message
    * @param {object} info - additionnal info
    */
-  _commitInfo(msg, info = {}) {
+  _commitInfo(msg, info) {
     this._commit("info", msg, info);
   }
 
