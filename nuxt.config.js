@@ -40,8 +40,8 @@ module.exports = async () => {
           name: "description",
           content: env.APP_DESC
         },
-        { name: "msapplication-TileColor", content: "#da532c" },
-        { name: "theme-color", content: "#feeeee" }
+        { name: "msapplication-TileColor", content: "#111111" },
+        { name: "theme-color", content: "#fefefe" }
       ],
       script,
       link: [
@@ -70,7 +70,7 @@ module.exports = async () => {
         {
           rel: "mask-icon",
           href: "/safari-pinned-tab.svg",
-          color: "#e84311"
+          color: "#111111"
         }
       ]
     },
@@ -78,7 +78,7 @@ module.exports = async () => {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: "#000000" },
+    loading: { color: "#111111" },
 
     /*
      ** Global CSS
@@ -88,7 +88,11 @@ module.exports = async () => {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [{ src: "~/plugins/welcome", mode: "client" }],
+    plugins: [
+      "~/plugins/logger",
+      "~/plugins/filters",
+      { src: "~/plugins/welcome", mode: "client" }
+    ],
 
     /*
      ** Nuxt.js modules
@@ -101,7 +105,7 @@ module.exports = async () => {
     buildModules: [
       "@nuxtjs/eslint-module",
       "~/modules/build",
-      "~/modules/generate",
+      ["~/modules/generate", { payloadCacheDir: env.GENERATE_CACHE_BASEDIR }],
       "~/modules/components",
       "~/modules/tailwindcss",
       "@nuxtjs/style-resources",
