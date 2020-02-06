@@ -10,10 +10,13 @@ const config = async () => {
   const COMMIT_REF = process.env.COMMIT_REF
     ? process.env.COMMIT_REF
     : "unknow commit reference";
+  const REPOSITORY_URL = process.env.REPOSITORY_URL
+    ? process.env.REPOSITORY_URL
+    : "unknown";
 
   const APP_NAME = process.env.APP_NAME || pkg.name;
   const APP_DESC = process.env.APP_DESC || pkg.description;
-  const APP_HOST = process.env.APP_HOST || "0.0.0.0";
+  const APP_HOST = process.env.APP_HOST || "localhost";
   const APP_PORT = process.env.APP_PORT || 3000;
   const APP_URL = process.env.APP_URL || `http://${APP_HOST}:${APP_PORT}`;
   const APP_LANG = process.env.APP_LANG || "en";
@@ -22,9 +25,12 @@ const config = async () => {
   const GTM_FRIENDLY = process.env.GTM_FRIENDLY || false;
   const GTM_DEV = process.env.GTM_DEV || false;
 
+  const CONSOLA_LEVEL = process.env.CONSOLA_LEVEL || 1;
+
   return {
     DEV,
-    COMMIT_REF,
+    // COMMIT_REF,
+    // REPOSITORY_URL,
 
     APP_NAME,
     APP_DESC,
@@ -36,6 +42,8 @@ const config = async () => {
     GTM_ID,
     GTM_FRIENDLY,
     GTM_DEV,
+
+    CONSOLA_LEVEL,
 
     CMS_CONTENT
   };
