@@ -1,15 +1,17 @@
 {
   "name": "template-vue-nuxt",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "A Nuxt.js starter pack to build app with Vue.js",
   "author": "lihbr",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "nuxt",
+    "predev:netlify": "shx rm -rf ./.nuxt",
+    "dev:netlify": "netlify dev --command=\"yarn dev\"",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern src/modules/*/*.plugin.js ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern src/modules/*/*.plugin.js --ignore-pattern src/app/router.scrollBehavior.js ."
   },
   "engines": {
     "node": ">=10.16.3",
@@ -26,12 +28,14 @@
     "cross-env": "6.0.3",
     "dotenv": "8.2.0",
     "is-mobile": "2.1.0",
+    "isomorphic-unfetch": "3.0.0",
     "marked": "0.7.0",
+    "md5": "2.2.1",
     "mouse-wheel": "1.2.0",
-    "netlify-cms": "2.9.7",
     "nuxt": "2.10.1",
     "object-fit-images": "3.2.4",
     "prismjs": "1.17.1",
+    "qs": "6.9.1",
     "scrollmagic": "2.0.7",
     "stats-js": "1.0.1",
     "tailwindcss": "1.1.2",
@@ -54,14 +58,15 @@
     "eslint-loader": "3.0.2",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-vue": "5.2.3",
-    "fibers": "4.0.1",
+    "fibers": "4.0.2",
     "globby": "10.0.1",
     "husky": "3.0.9",
-    "nodemon": "1.19.4",
+    "nodemon": "2.0.2",
     "nuxt-svg-loader": "1.0.1",
     "prettier": "1.18.2",
     "sass": "1.23.0",
     "sass-loader": "7.1.0",
+    "shx": "0.3.2",
     "slugify": "1.3.5"
   }
 }
