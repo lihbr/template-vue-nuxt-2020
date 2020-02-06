@@ -10,6 +10,9 @@
 export default {
   components: {
     // Component
+  },
+  mounted() {
+    this.$store.dispatch("pageChanged");
   }
 };
 </script>
