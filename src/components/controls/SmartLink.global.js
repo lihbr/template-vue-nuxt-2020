@@ -5,6 +5,7 @@ import { mergeData } from "vue-functional-data-merge";
 const FRAMEWORK_LINK = "nuxt-link";
 
 export default {
+  name: "SmartLink",
   functional: true,
   props: {
     // Target
