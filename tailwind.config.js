@@ -11,6 +11,8 @@ const colors = {
   white: "#fefefe"
 };
 const colorOpacityVariants = [20];
+const colorLightenVariants = [20];
+
 /**
  * End generic project config
  */
@@ -67,6 +69,12 @@ module.exports = {
             .rgb()
             .toString();
         }
+        for (const lighten of colorLightenVariants) {
+          colorObject[`l-${lighten}`] = Color(value)
+            .lighten(lighten / 100)
+            .rgb()
+            .toString();
+        }
 
         finalColors[color] = colorObject;
       }
@@ -119,7 +127,7 @@ module.exports = {
 
       return zIndex;
     },
-    // Acceccible from transition-
+    // Access from transition-
     transitionProperty: {
       default: "all",
       color: "color",
@@ -129,22 +137,23 @@ module.exports = {
       transform: "transform",
       "opacity-transform": ["opacity", "transform"]
     },
-    // Accessible from transition-
+    // Access from transition-
     transitionDuration: {
       default: `${baseDuration}ms`,
-      eighth: `${Math.floor(baseDuration / 8)}ms`,
-      quarter: `${Math.floor(baseDuration / 4)}ms`,
-      half: `${Math.floor(baseDuration / 2)}ms`,
+      "1/8": `${Math.floor(baseDuration / 8)}ms`,
+      "1/4": `${Math.floor(baseDuration / 4)}ms`,
+      "1/2": `${Math.floor(baseDuration / 2)}ms`,
+      "3/4": `${Math.floor((baseDuration / 4) * 3)}ms`,
       double: `${baseDuration * 2}ms`
     },
-    // Accessible from transition-delay-
+    // Access from transition-delay-
     transitionDelay: theme => ({
       base: theme("transitionDuration.default"),
       ...theme("transitionDuration"),
-      none: "none",
-      default: 0
+      none: "0ms",
+      default: "0ms"
     }),
-    // Accessible from transition-
+    // Access from transition-
     transitionTimingFunction: {
       default: "cubic-bezier(.54,.1,0,.99)",
       // Functions from https://easings.net
@@ -176,8 +185,14 @@ module.exports = {
     extend: {
       spacing: () => {
         const spacing = {
+          none: "none",
           inherit: "inherit",
+          "5/2": "10px", // 10px
+          "-5/2": "-10", // -10px
           semicol: `${col * 0.5}px`, // 60px
+          "-semicol": `${col * -0.5}px`, // -60px
+          "col-3/4": `${col * 0.75}px`, // 90px
+          "-col-3/4": `${col * -0.75}px`, // -90px
           col: `${col}px`, // 120px
           "col-1": `${col}px`, // 120px
           "col-2": `${col * 2}px`, // 240px
@@ -206,11 +221,11 @@ module.exports = {
         return spacing;
       },
       inset: theme => theme("spacing"),
-      maxWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
       minWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
+      maxWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
       height: theme => ({ ...theme("width"), screen: "100vh" }),
-      maxHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
       minHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
+      maxHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
       lineHeight: {
         "0": 0
       }
