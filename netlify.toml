@@ -1,9 +1,9 @@
 # Global context
 [build]
   # Base directory
-  base = "./"
+  base = ""
   # Build command
-  command = "yarn run generate"
+  command = "yarn generate"
   # Build directory
   publish = "dist/"
   # Serverless Lambda functions
@@ -41,11 +41,11 @@
 [context.branch-deploy.processing]
   skip_processing = true
 
-[[redirects]]
-  from = "/api/v1/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-  force = true
+# [[redirects]]
+#   from = "/api/v1/*"
+#   to = "/.netlify/functions/:splat"
+#   status = 200
+#   force = true
 
 # [[redirects]]
 #   from = "https://www.example.com/*"
