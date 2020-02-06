@@ -1,3 +1,5 @@
+import logger from "~/assets/js/logger";
+
 export const state = () => ({
   loaded: false,
   inited: false
@@ -15,7 +17,7 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ dispatch }) {
     dispatch("load");
-    console.info("Nuxt server init content loaded");
+    logger.info("Nuxt server init content loaded");
   },
   load({ state, commit, dispatch }) {
     if (state.loaded) return;
