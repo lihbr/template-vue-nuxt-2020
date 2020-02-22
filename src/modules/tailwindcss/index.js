@@ -3,6 +3,12 @@ const path = require("path");
 const logger = require("./logger");
 
 module.exports = function(moduleOptions) {
+  const options = {
+    whitelist: [],
+    whitelistPatterns: [],
+    ...moduleOptions
+  };
+
   this.nuxt.hook("build:before", () => {
     // Get default
     this.options.build.postcss.plugins =
@@ -34,9 +40,17 @@ module.exports = function(moduleOptions) {
           path.resolve(this.options.srcDir, "./components/**/*.js"),
           path.resolve(this.options.srcDir, "./plugins/**/*.js")
         ],
-        whitelist: ["body", "html", "nuxt-progress", "__nuxt", "__layout"],
+        whitelist: [
+          "body",
+          "html",
+          "nuxt-progress",
+          "__nuxt",
+          "__layout",
+          ...options.whitelist
+        ],
         whitelistPatterns: [
-          /.*-(enter|enter-active|enter-to|leave|leave-active|leave-to)/
+          /.*-(enter|enter-active|enter-to|leave|leave-active|leave-to)/,
+          ...options.whitelistPatterns
         ],
         defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
       };
