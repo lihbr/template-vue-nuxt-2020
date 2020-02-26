@@ -54,6 +54,7 @@ module.exports = {
     colors: () => {
       const finalColors = {
         none: "transparent",
+        transparent: "transparent",
         inherit: "inherit"
       };
 
@@ -135,6 +136,8 @@ module.exports = {
       color: "color",
       bg: "background-color",
       colors: "background-color, border-color, color, fill, stroke",
+      height: "height",
+      width: "width",
       "width-height": "width, height",
       opacity: "opacity",
       transform: "transform",
