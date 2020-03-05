@@ -4,7 +4,7 @@ const Color = require("color");
  * Start generic project config
  */
 const col = 120;
-const baseDuration = 1500;
+const baseDuration = 750;
 
 const colors = {
   black: "#111111",
@@ -187,7 +187,7 @@ module.exports = {
           none: "none",
           inherit: "inherit",
           "5/2": "10px", // 10px
-          "-5/2": "-10", // -10px
+          "-5/2": "-10px", // -10px
           semicol: `${col * 0.5}px`, // 60px
           "-semicol": `${col * -0.5}px`, // -60px
           "col-3/4": `${col * 0.75}px`, // 90px
