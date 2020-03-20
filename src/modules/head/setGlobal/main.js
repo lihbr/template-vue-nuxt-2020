@@ -3,9 +3,6 @@
  * @param {Object} options - module options object
  */
 const main = function(options) {
-  // Title
-  this.options.head.title = this.options.head.title || options.name;
-
   // HTML attributes
   this.options.head.htmlAttrs = this.options.head.htmlAttrs || {};
   this.options.head.htmlAttrs.lang =

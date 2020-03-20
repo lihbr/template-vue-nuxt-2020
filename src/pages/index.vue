@@ -13,6 +13,14 @@ export default {
   },
   mounted() {
     this.$store.dispatch("pageChanged");
+  },
+  head() {
+    return this.$buildHead({
+      title: "Home",
+      description: "This is the home page",
+      metaImage: {},
+      path: this.$route.path
+    });
   }
 };
 </script>

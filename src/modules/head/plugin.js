@@ -65,10 +65,89 @@ const metaDescriptionTemplate = pageDescription => {
 Vue.prototype.$buildHead = ({
   title = __undefined,
   description = __undefined,
-  metaImage = ({ og = undefined, tw = undefined } = {}),
+  metaImage = { og: undefined, tw: undefined },
   path,
   additionalStructuredData = []
 } = {}) => {
+  const itempropMeta = [
+    {
+      hid: "itemprop_name",
+      itemprop: "name",
+      content: title,
+      template: metaTitleTemplate
+    },
+    {
+      hid: "itemprop_description",
+      itemprop: "description",
+      content: description,
+      template: metaDescriptionTemplate
+    }
+  ];
+
+  const ogMeta = [
+    {
+      hid: "og:url",
+      property: "og:url",
+      content: path,
+      template: path => {
+        if (path) {
+          return `${APP_URL}${path}`.replace(/\/$/, "");
+        } else {
+          return APP_URL;
+        }
+      }
+    },
+    {
+      hid: "og:title",
+      property: "og:title",
+      content: title,
+      template: metaTitleTemplate
+    },
+    {
+      hid: "og:description",
+      property: "og:description",
+      content: description,
+      template: metaDescriptionTemplate
+    }
+  ];
+
+  if (metaImage.og) {
+    itempropMeta.push({
+      hid: "itemprop_image",
+      itemprop: "image",
+      content: metaImage.og
+    });
+
+    ogMeta.push({
+      hid: "og:image",
+      property: "og:image",
+      content: metaImage.og
+    });
+  }
+
+  const twitterMeta = [
+    {
+      hid: "twitter:title",
+      name: "twitter:title",
+      content: title,
+      template: metaTitleTemplate
+    },
+    {
+      hid: "twitter:description",
+      name: "twitter:description",
+      content: description,
+      template: metaDescriptionTemplate
+    }
+  ];
+
+  if (metaImage.tw) {
+    twitterMeta.push({
+      hid: "twitter:image",
+      name: "twitter:image",
+      content: metaImage.tw
+    });
+  }
+
   return {
     title,
     titleTemplate: metaTitleTemplate,
@@ -80,71 +159,9 @@ Vue.prototype.$buildHead = ({
         template: metaDescriptionTemplate
       },
 
-      {
-        hid: "itemprop_name",
-        itemprop: "name",
-        content: title,
-        template: metaTitleTemplate
-      },
-      {
-        hid: "itemprop_description",
-        itemprop: "description",
-        content: description,
-        template: metaDescriptionTemplate
-      },
-      {
-        hid: "itemprop_image",
-        itemprop: "image",
-        content: metaImage.og
-      },
-
-      {
-        hid: "og:url",
-        property: "og:url",
-        content: path,
-        template: path => {
-          if (path) {
-            return `${APP_URL}${path}`.replace(/\/$/, "");
-          } else {
-            return APP_URL;
-          }
-        }
-      },
-      {
-        hid: "og:title",
-        property: "og:title",
-        content: title,
-        template: metaTitleTemplate
-      },
-      {
-        hid: "og:description",
-        property: "og:description",
-        content: description,
-        template: metaDescriptionTemplate
-      },
-      {
-        hid: "og:image",
-        property: "og:image",
-        content: metaImage.og
-      },
-
-      {
-        hid: "twitter:title",
-        name: "twitter:title",
-        content: title,
-        template: metaTitleTemplate
-      },
-      {
-        hid: "twitter:description",
-        name: "twitter:description",
-        content: description,
-        template: metaDescriptionTemplate
-      },
-      {
-        hid: "twitter:image",
-        name: "twitter:image",
-        content: metaImage.tw
-      }
+      ...itempropMeta,
+      ...ogMeta,
+      ...twitterMeta
     ],
     script: [
       {
