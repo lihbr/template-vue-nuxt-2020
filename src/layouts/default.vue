@@ -10,13 +10,6 @@
 import objectFitImages from "object-fit-images";
 
 export default {
-  head() {
-    return {
-      htmlAttrs: {
-        class: this.getHtmlClass().join(" ")
-      }
-    };
-  },
   computed: {
     detect() {
       return this.$store.state.detect;
@@ -48,6 +41,13 @@ export default {
 
       return htmlClass;
     }
+  },
+  head() {
+    return {
+      htmlAttrs: {
+        class: this.getHtmlClass().join(" ")
+      }
+    };
   }
 };
 </script>
