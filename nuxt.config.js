@@ -1,5 +1,9 @@
+const { envConfig } = require("./env.config");
+const logger = require("consola").withScope("nuxt");
+
 module.exports = async () => {
-  const env = await require("./env").config();
+  // Configure application environment
+  const env = envConfig(/* settings, CMS_GLOBAL */);
 
   const script = [];
 
@@ -15,65 +19,9 @@ module.exports = async () => {
     srcDir: "src/",
 
     /*
-     ** Headers of the page, see in ./config
+     ** Head of the page, handled by head module
      */
-    head: {
-      titleTemplate: pageTitle => {
-        if (pageTitle && pageTitle.trim()) {
-          return `${pageTitle} - ${process.env.APP_NAME}`;
-        } else {
-          return process.env.APP_NAME;
-        }
-      },
-      htmlAttrs: {
-        lang: env.APP_LANG,
-        class: ""
-      },
-      meta: [
-        { charset: "utf-8" },
-        {
-          name: "viewport",
-          content: "width=device-width, initial-scale=1"
-        },
-        {
-          hid: "description",
-          name: "description",
-          content: env.APP_DESC
-        },
-        { name: "msapplication-TileColor", content: "#111111" },
-        { name: "theme-color", content: "#fefefe" }
-      ],
-      script,
-      link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        {
-          rel: "apple-touch-icon",
-          sizes: "180x180",
-          href: "/apple-touch-icon.png"
-        },
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "32x32",
-          href: "/favicon-32x32.png"
-        },
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "16x16",
-          href: "/favicon-16x16.png"
-        },
-        {
-          rel: "manifest",
-          href: "/site.webmanifest"
-        },
-        {
-          rel: "mask-icon",
-          href: "/safari-pinned-tab.svg",
-          color: "#111111"
-        }
-      ]
-    },
+    head: {},
 
     /*
      ** Customize the progress-bar color
@@ -88,11 +36,7 @@ module.exports = async () => {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [
-      "~/plugins/logger",
-      "~/plugins/filters",
-      { src: "~/plugins/welcome", mode: "client" }
-    ],
+    plugins: ["~/plugins/logger", "~/plugins/filters"],
 
     /*
      ** Nuxt.js modules
@@ -105,11 +49,31 @@ module.exports = async () => {
     buildModules: [
       "@nuxtjs/eslint-module",
       "~/modules/build",
-      ["~/modules/generate", { payloadCacheDir: env.GENERATE_CACHE_BASEDIR }],
+      [
+        "~/modules/head",
+        {
+          lang: env.APP_LANG,
+          name: env.APP_NAME,
+          description: env.APP_DESC,
+          metaImage: {
+            og: env.APP_METAIMG_OG,
+            tw: env.APP_METAIMG_TW
+          },
+          twitterHandle: env.APP_TWITTER_HANDLE,
+          script,
+          backgroundColor: "#feeeee",
+          accentColor: "#e84311",
+          titleFormat: "%page% - %site%",
+          url: env.APP_URL
+        }
+      ],
+      "~/modules/cache",
+      "~/modules/statistics",
       "~/modules/tailwindcss",
       "@nuxtjs/global-components",
       "@nuxtjs/style-resources",
       "@nuxtjs/sitemap",
+      "@nuxtjs/feed",
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
       [
         "@nuxtjs/google-tag-manager",
@@ -131,6 +95,14 @@ module.exports = async () => {
     },
 
     /*
+     ** Generate
+     */
+    generate: {
+      fallback: true,
+      routes: ["/"]
+    },
+
+    /*
      ** Sitemap
      */
     sitemap: {
@@ -138,6 +110,11 @@ module.exports = async () => {
       gzip: true,
       exclude: []
     },
+
+    /*
+     ** Feed
+     */
+    feed: [],
 
     /*
      ** Env
