@@ -18,17 +18,17 @@ const meta = function(options) {
     }
   ];
 
-  if (options.metaimg.og) {
+  if (options.metaImage.og) {
     itempropMeta.push({
       hid: "itemprop_image",
       itemprop: "image",
-      content: options.metaimg.og
+      content: options.metaImage.og
     });
 
     ogMeta.push({
       hid: "og:image",
       property: "og:image",
-      content: options.metaimg.og
+      content: options.metaImage.og
     });
   }
 
@@ -40,11 +40,11 @@ const meta = function(options) {
     }
   ];
 
-  if (options.metaimg.tw) {
+  if (options.metaImage.tw) {
     twitterMeta.push({
       hid: "twitter:image",
       name: "twitter:image",
-      content: options.metaimg.tw
+      content: options.metaImage.tw
     });
   }
 
