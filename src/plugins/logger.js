@@ -1,5 +1,5 @@
-import Vue from "vue";
-
 import logger from "~/assets/js/logger";
 
-Vue.prototype.$logger = logger;
+export default (context, inject) => {
+  inject("logger", logger);
+};

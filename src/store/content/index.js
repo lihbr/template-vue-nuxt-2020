@@ -1,5 +1,5 @@
 export const state = () => ({
-  // TODO: Create default state with empty object / array for CMS_CONTENT keys
+  // TODO: Create default state with empty object / array for cmsGlobal keys
 });
 
 export const mutations = {
@@ -10,9 +10,9 @@ export const mutations = {
 
 export const actions = {
   async load({ commit }) {
-    const CMS_CONTENT = process.env.CMS_CONTENT;
-    for (const key in process.env.CMS_CONTENT) {
-      commit("set", { key, value: CMS_CONTENT[key] });
+    const cmsGlobal = process.env.CMS_GLOBAL;
+    for (const key in cmsGlobal) {
+      commit("set", { key, value: cmsGlobal[key] });
     }
   }
 };
