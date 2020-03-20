@@ -1,3 +1,5 @@
+const defaultsDeep = require("lodash/defaultsDeep");
+
 const logger = require("./logger");
 
 const statisticsFunctions = {
@@ -21,10 +23,9 @@ const statisticsFunctions = {
 };
 
 module.exports = function(moduleOptions) {
-  const options = {
-    ignore: [],
-    ...moduleOptions
-  };
+  const options = defaultsDeep(moduleOptions, {
+    ignore: []
+  });
 
   // Run each non-ignored statistics functions
   for (const key in statisticsFunctions) {

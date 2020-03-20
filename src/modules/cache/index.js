@@ -1,5 +1,6 @@
 const path = require("path");
 const md5 = require("md5");
+const defaultsDeep = require("lodash/defaultsDeep");
 
 // Covered by nuxt
 const { copy, outputJSONSync } = require("fs-extra");
@@ -8,22 +9,23 @@ const serveStatic = require("serve-static");
 const logger = require("./logger");
 
 module.exports = async function(moduleOptions) {
-  // Resolve options
-  const options = {
-    payloadCacheBasedir: "/cache",
-    ...moduleOptions
-  };
+  /**
+   * Options
+   */
+  const options = defaultsDeep(moduleOptions, {
+    payloadCacheBasedir: "/cache"
+  });
 
   /**
    * Checks
    */
   if (!this.options.generate) {
-    logger.fatal(
+    return logger.fatal(
       // eslint-disable-next-line
       "\"generate\" object is not defined in \"nuxt.config.js\", disabling module"
     );
   } else if (!this.options.generate.routes) {
-    logger.fatal(
+    return logger.fatal(
       // eslint-disable-next-line
       "\"generate.routes\" array is not defined in \"nuxt.config.js\", disabling module"
     );

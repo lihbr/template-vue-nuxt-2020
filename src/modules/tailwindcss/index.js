@@ -1,13 +1,13 @@
 const path = require("path");
+const defaultsDeep = require("lodash/defaultsDeep");
 
 const logger = require("./logger");
 
 module.exports = function(moduleOptions) {
-  const options = {
+  const options = defaultsDeep(moduleOptions, {
     whitelist: [],
-    whitelistPatterns: [],
-    ...moduleOptions
-  };
+    whitelistPatterns: []
+  });
 
   this.nuxt.hook("build:before", () => {
     // Get default
