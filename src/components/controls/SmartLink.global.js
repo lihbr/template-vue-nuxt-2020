@@ -8,17 +8,14 @@ export default {
   name: "SmartLink",
   functional: true,
   props: {
-    // Target
     href: {
       type: String,
-      default: () => ""
+      default: ""
     },
-    // Link title
     title: {
       type: String,
-      default: () => ""
+      default: ""
     },
-    // Open target on a new page
     blank: {
       type: Boolean,
       default: false
