@@ -254,32 +254,6 @@ module.exports = {
       addUtilities(objectFitUtilities, {
         variants: ["responsive"]
       });
-
-      const flexUtilities = {
-        ".flex-center": {
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }
-      };
-      addUtilities(flexUtilities, {
-        variants: ["responsive"]
-      });
-
-      const transformUtilities = {
-        ".transform-center": {
-          transform: "translate(-50%, -50%)"
-        },
-        ".transform-center-x": {
-          transform: "translate(-50%, 0)"
-        },
-        ".transform-center-y": {
-          transform: "translate(0, -50%)"
-        }
-      };
-      addUtilities(transformUtilities, {
-        variants: ["responsive"]
-      });
     }
   ]
 };
