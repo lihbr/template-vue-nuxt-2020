@@ -2,7 +2,7 @@
  * Set head link
  * @param {Object} options - module options object
  */
-const link = function(options) {
+const link = function (options) {
   this.options.head.link = this.options.head.link || [];
   this.options.head.link.push(
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

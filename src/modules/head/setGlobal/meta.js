@@ -2,7 +2,7 @@
  * Set head meta
  * @param {Object} options - module options object
  */
-const meta = function(options) {
+const meta = function (options) {
   const itempropMeta = [];
 
   const ogMeta = [

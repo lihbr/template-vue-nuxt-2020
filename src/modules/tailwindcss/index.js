@@ -3,7 +3,7 @@ const defaultsDeep = require("lodash/defaultsDeep");
 
 const logger = require("./logger");
 
-module.exports = function(moduleOptions) {
+module.exports = function (moduleOptions) {
   const options = defaultsDeep(moduleOptions, {
     whitelist: [],
     whitelistPatterns: []

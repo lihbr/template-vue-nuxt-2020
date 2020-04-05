@@ -22,7 +22,7 @@ export default {
     }
   },
   computed: {
-    code: function() {
+    code: function () {
       return this.error.statusCode || this.error.code;
     },
     message() {

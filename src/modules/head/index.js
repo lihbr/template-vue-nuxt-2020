@@ -5,7 +5,7 @@ const setGlobal = require("./setGlobal");
 
 const logger = require("./logger");
 
-module.exports = function(moduleOptions) {
+module.exports = function (moduleOptions) {
   /**
    * Options
    */

@@ -8,7 +8,7 @@ const serveStatic = require("serve-static");
 
 const logger = require("./logger");
 
-module.exports = async function(moduleOptions) {
+module.exports = async function (moduleOptions) {
   /**
    * Options
    */

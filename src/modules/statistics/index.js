@@ -22,7 +22,7 @@ const statisticsFunctions = {
   }
 };
 
-module.exports = function(moduleOptions) {
+module.exports = function (moduleOptions) {
   const options = defaultsDeep(moduleOptions, {
     ignore: []
   });

@@ -1,6 +1,6 @@
 const logger = require("./logger");
 
-module.exports = function(moduleOptions) {
+module.exports = function (moduleOptions) {
   this.nuxt.hook("build:before", () => {
     // Extract css from HTML
     this.options.build.extractCSS = true;
