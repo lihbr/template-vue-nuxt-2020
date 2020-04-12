@@ -10,56 +10,6 @@ const rand = (min = 0, max = 1, floor = false) => {
 };
 
 /**
- * Debounce from Underscore.js
- * @param {function} func - function to debounce
- * @param {number} wait - delay
- * @param {boolean} immediate - if true call function on the leading edge instead of the trailing
- * @return {function}
- */
-const debounce = function (func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = this,
-      args = arguments;
-    var later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
-
-/**
- * Throttle from Underscore.js
- * @param {function} func - function to throttle
- * @param {number} rate - rate
- * @return {function}
- */
-const throttle = (func, limit) => {
-  let lastFunc;
-  let lastRan;
-  return function () {
-    const context = this;
-    const args = arguments;
-    if (!lastRan) {
-      func.apply(context, args);
-      lastRan = Date.now();
-    } else {
-      clearTimeout(lastFunc);
-      lastFunc = setTimeout(function () {
-        if (Date.now() - lastRan >= limit) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
-    }
-  };
-};
-
-/**
  * Just a bunch of timing function
  */
 const timingFunctions = {
@@ -117,4 +67,4 @@ const timingFunctions = {
   }
 };
 
-export { rand, debounce, throttle, timingFunctions };
+export { rand, timingFunctions };
