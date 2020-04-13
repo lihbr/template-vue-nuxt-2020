@@ -2,6 +2,7 @@
   "name": "template-vue-nuxt",
   "version": "2.5.0",
   "description": "A Nuxt.js starter pack to build app with Vue.js",
+  "private": true,
   "author": "lihbr",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
