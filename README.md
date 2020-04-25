@@ -8,7 +8,7 @@ A Nuxt.js starter pack to build app with Vue.js
 
 ## About
 
-This website is made with [Vue.js](https://vuejs.org/) under [Nuxt.js](https://nuxtjs.org), for detailed explanation on how things work please refer to related documentations.
+This website is made with [Vue.js](https://vuejs.org) under [Nuxt.js](https://nuxtjs.org), for detailed explanation on how things work please refer to related documentations.
 
 ## Setup
 
@@ -22,6 +22,7 @@ $ npm install -g --production windows-build-tools
 ```
 
 <!-- Uncomment is using Netlify functions -->
+
 <!-- As this project also makes use of [Netlify functions](https://docs.netlify.com/functions/overview), to run them locally you'll need the Netlify's cli:
 
 ```bash
@@ -29,6 +30,7 @@ $ npm install -g netlify-cli
 ``` -->
 
 <!-- Uncomment if usage requires an internet connection -->
+
 <!-- Finally the develop or build process of this project also require an internet connection in order to fetch content from CMS, offline usage is not possible. -->
 
 ### Install
@@ -46,6 +48,8 @@ During the process you can also create a `.env` file by copying `.env.example` a
 
 ### Development
 
+#### Without Netlify functions:
+
 To run the project without Netlify functions simply run:
 
 ```bash
@@ -57,7 +61,22 @@ $ npm run dev
 
 Nuxt development server will be running at `localhost:3000`
 
-<!-- TODO: update when functions are used -->
+<!-- Uncomment is using Netlify functions -->
+
+<!-- #### With Netlify functions:
+
+If you want the project with Netlify functions available run:
+
+```bash
+# launch nuxt development server with yarn
+$ yarn dev:netlify
+# or with npm
+$ npm run dev:netlify
+```
+
+> Be aware that you need Nuxt server to run on `localhost` host for `netlify dev` to be able to wrap the server.
+
+Nuxt development server will be running with functions at `localhost:8888` -->
 
 ### Build
 

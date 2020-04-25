@@ -26,7 +26,7 @@ module.exports = async () => {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: "#111111" },
+    loading: { color: env.APP_ACCENT_COLOR },
 
     /*
      ** Global CSS
@@ -61,8 +61,8 @@ module.exports = async () => {
           },
           twitterHandle: env.APP_TWITTER_HANDLE,
           script,
-          backgroundColor: "#feeeee",
-          accentColor: "#e84311",
+          backgroundColor: env.APP_BACKGROUND_COLOR,
+          accentColor: env.APP_ACCENT_COLOR,
           titleFormat: "%page% - %site%",
           url: env.APP_URL
         }
@@ -82,6 +82,32 @@ module.exports = async () => {
           pageTracking: true,
           respectDoNotTrack: env.GTM_FRIENDLY,
           dev: env.GTM_DEV
+        }
+      ],
+      [
+        "@nuxtjs/pwa",
+        {
+          workbox: {
+            offlineAnalytics: !!env.GTM_ID && true,
+            // Register image CDN here
+            runtimeCaching: [
+              // {
+              //   urlPattern: `https://example.com/.*`
+              // }
+            ]
+          },
+          meta: false,
+          icon: {
+            accessibleIcons: false
+          },
+          manifest: {
+            lang: env.APP_LANG,
+            name: env.APP_NAME,
+            short_name: env.APP_NAME,
+            description: env.APP_DESC,
+            background_color: env.APP_BACKGROUND_COLOR,
+            theme_color: env.APP_ACCENT_COLOR
+          }
         }
       ],
       "nuxt-svg-loader"

@@ -8,11 +8,11 @@
   "scripts": {
     "dev": "nuxt",
     "predev:netlify": "shx rm -rf ./.nuxt",
-    "dev:netlify": "netlify dev --command=\"yarn dev\"",
+    "dev:netlify": "netlify dev --command=\"nuxt\"",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern src/modules/*/*.plugin.js --ignore-pattern src/app/router.scrollBehavior.js ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern src/modules/*/*.plugin.js --ignore-pattern src/app/router.scrollBehavior.js --ignore-pattern src/static/sw.js ."
   },
   "engines": {
     "node": ">=10.16.3",
@@ -51,6 +51,7 @@
     "@nuxtjs/global-components": "0.6.1",
     "@nuxtjs/google-tag-manager": "2.3.2",
     "@nuxtjs/netlify-files": "1.0.0",
+    "@nuxtjs/pwa": "3.0.0-beta.20",
     "@nuxtjs/sitemap": "2.2.0",
     "@nuxtjs/style-resources": "1.0.0",
     "babel-eslint": "10.1.0",
