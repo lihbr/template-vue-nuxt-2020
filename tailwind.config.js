@@ -55,6 +55,7 @@ module.exports = {
       const finalColors = {
         none: "transparent",
         transparent: "transparent",
+        current: "currentColor",
         inherit: "inherit"
       };
 
