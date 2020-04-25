@@ -3,7 +3,7 @@ const logger = require("./logger");
 module.exports = function (moduleOptions) {
   this.nuxt.hook("build:before", () => {
     // Extract css from HTML
-    this.options.build.extractCSS = true;
+    this.options.build.extractCSS = !this.options.env.DEV;
 
     // Use dart-sass
     this.options.build.loaders.sass = this.options.build.loaders.sass || {};
