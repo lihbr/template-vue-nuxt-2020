@@ -1,5 +1,6 @@
+<!-- HEALTH:UNKNOWN __page__error -->
 <template>
-  <div class="wrapper">
+  <div class="__page__error">
     <h1>{{ code }}</h1>
     <h2>{{ message }}</h2>
     <smart-link class="underline" to="/">
@@ -22,7 +23,7 @@ export default {
     }
   },
   computed: {
-    code: function () {
+    code() {
       return this.error.statusCode || this.error.code;
     },
     message() {
@@ -32,4 +33,6 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+// .__page__error
+</style>

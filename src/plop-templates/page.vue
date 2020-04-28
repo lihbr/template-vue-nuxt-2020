@@ -1,9 +1,9 @@
-<!-- HEALTH:UNKNOWN __page__home -->
+<!-- HEALTH:UNKNOWN __page__{{ kebabCase route }} -->
 <template>
-  <div class="__page__home" :slices="data.slices">
+  <div class="__page__{{ kebabCase route }}" :slices="data.slices">
     <div class="content">
       <container>
-        Home
+        {{ pascalCase route }}
       </container>
     </div>
   </div>
@@ -35,5 +35,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-// .__page__home
+// .__page__{{ kebabCase route }}
 </style>

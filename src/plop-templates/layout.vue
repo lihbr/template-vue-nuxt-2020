@@ -1,6 +1,6 @@
-<!-- HEALTH:UNKNOWN __layout__default -->
+<!-- HEALTH:UNKNOWN __layout__{{ kebabCase name }} -->
 <template>
-  <div class="__layout__default">
+  <div class="__layout__{{ kebabCase name }}">
     <main class="main">
       <nuxt />
     </main>
