@@ -185,14 +185,7 @@ module.exports = {
     extend: {
       spacing: () => {
         const spacing = {
-          none: "none",
           inherit: "inherit",
-          "5/2": "10px", // 10px
-          "-5/2": "-10px", // -10px
-          semicol: `${col * 0.5}px`, // 60px
-          "-semicol": `${col * -0.5}px`, // -60px
-          "col-3/4": `${col * 0.75}px`, // 90px
-          "-col-3/4": `${col * -0.75}px`, // -90px
           col: `${col}px`, // 120px
           "col-1": `${col}px`, // 120px
           "col-2": `${col * 2}px`, // 240px
@@ -208,10 +201,6 @@ module.exports = {
           "col-12": `${col * 12}px` // 1440px
         };
 
-        for (let i = 1; i <= 12; i++) {
-          spacing[`-col-${i}`] = `${col * -i}px`;
-        }
-
         for (let i = 1; i <= 20; i++) {
           spacing[`${i * 5}vw`] = `${i * 5}vw`;
           spacing[`${i * 5}vh`] = `${i * 5}vh`;
@@ -221,11 +210,27 @@ module.exports = {
         return spacing;
       },
       inset: theme => theme("spacing"),
-      minWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
-      maxWidth: theme => ({ ...theme("spacing"), screen: "100vw" }),
+      minWidth: theme => ({
+        ...theme("spacing"),
+        screen: "100vw",
+        none: "none"
+      }),
+      maxWidth: theme => ({
+        ...theme("spacing"),
+        screen: "100vw",
+        none: "none"
+      }),
       height: theme => ({ ...theme("width"), screen: "100vh" }),
-      minHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
-      maxHeight: theme => ({ ...theme("maxWidth"), screen: "100vh" }),
+      minHeight: theme => ({
+        ...theme("maxWidth"),
+        screen: "100vh",
+        none: "none"
+      }),
+      maxHeight: theme => ({
+        ...theme("maxWidth"),
+        screen: "100vh",
+        none: "none"
+      }),
       lineHeight: {
         "0": 0
       }
