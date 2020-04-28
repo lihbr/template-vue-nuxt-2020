@@ -63,7 +63,7 @@ module.exports = async () => {
           script,
           backgroundColor: env.APP_BACKGROUND_COLOR,
           accentColor: env.APP_ACCENT_COLOR,
-          titleFormat: "%page% - %site%",
+          titleFormat: env.APP_TITLE_FORMAT,
           url: env.APP_URL
         }
       ],
@@ -101,6 +101,7 @@ module.exports = async () => {
             accessibleIcons: false
           },
           manifest: {
+            // display: "browser", // disable "Add to Home Screen" button
             lang: env.APP_LANG,
             name: env.APP_NAME,
             short_name: env.APP_NAME,
@@ -125,7 +126,12 @@ module.exports = async () => {
      */
     generate: {
       fallback: true,
-      routes: ["/"]
+      routes: [
+        {
+          route: "/",
+          payload: {}
+        }
+      ]
     },
 
     /*

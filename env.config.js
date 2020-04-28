@@ -13,10 +13,10 @@ const firstTrue = (...options) =>
 /**
  * Configure app shared env variables
  * @param {Object} settings - settings from CMS
- * @param {Object} CMS_GLOBAL - global content coming from CMS to load into Vuex
+ * @param {Object} GLOBAL_CONTENT - global content to load into Vuex
  * @return {Object} - built env object
  */
-const envConfig = (settings = {}, CMS_GLOBAL) => {
+const envConfig = (settings = {}, GLOBAL_CONTENT) => {
   // TRUE if in development mode
   const DEV = process.env.NODE_ENV === "development";
   // Netlify commit reference env variable
@@ -33,6 +33,12 @@ const envConfig = (settings = {}, CMS_GLOBAL) => {
     settings.site_title,
     process.env.APP_NAME,
     pkg.name
+  );
+  // Application name
+  const APP_TITLE_FORMAT = firstTrue(
+    settings.title_format,
+    process.env.APP_TITLE_FORMAT,
+    "%page% - %site%"
   );
   // Application description
   const APP_DESC = firstTrue(
@@ -58,6 +64,13 @@ const envConfig = (settings = {}, CMS_GLOBAL) => {
     process.env.APP_TWITTER_HANDLE,
     ""
   );
+  // Application background color
+  const APP_BACKGROUND_COLOR = firstTrue(
+    process.env.APP_BACKGROUND_COLOR,
+    "#fefefe"
+  );
+  // Application accent color
+  const APP_ACCENT_COLOR = firstTrue(process.env.APP_ACCENT_COLOR, "#111111");
 
   /**
    * Usage
@@ -122,10 +135,13 @@ const envConfig = (settings = {}, CMS_GLOBAL) => {
     REPOSITORY_URL,
 
     APP_NAME,
+    APP_TITLE_FORMAT,
     APP_DESC,
     APP_METAIMG_OG,
     APP_METAIMG_TW,
     APP_TWITTER_HANDLE,
+    APP_BACKGROUND_COLOR,
+    APP_ACCENT_COLOR,
 
     APP_HOST,
     APP_PORT,
@@ -138,7 +154,7 @@ const envConfig = (settings = {}, CMS_GLOBAL) => {
 
     CONSOLA_LEVEL,
 
-    CMS_GLOBAL
+    GLOBAL_CONTENT
   };
 };
 

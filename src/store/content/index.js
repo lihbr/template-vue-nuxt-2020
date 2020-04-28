@@ -9,10 +9,10 @@ export const mutations = {
 };
 
 export const actions = {
-  async load({ commit }) {
-    const cmsGlobal = process.env.CMS_GLOBAL;
-    for (const key in cmsGlobal) {
-      commit("set", { key, value: cmsGlobal[key] });
+  load({ commit }) {
+    const globalContent = process.env.GLOBAL_CONTENT;
+    for (const key in globalContent) {
+      commit("set", { key, value: globalContent[key] });
     }
   }
 };
