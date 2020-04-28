@@ -2,9 +2,7 @@
 <template>
   <div class="__page__home" :slices="data.slices">
     <div class="content">
-      <container>
-        Home
-      </container>
+      Home
     </div>
   </div>
 </template>
@@ -27,7 +25,10 @@ export default {
     return this.$buildHead({
       title: meta_title || "💐",
       description: meta_description,
-      metaImage: { og: meta_image.url, tw: meta_image.twitter_variant.url },
+      metaImage: {
+        og: undefined /* meta_image.url */,
+        tw: undefined /* meta_image.twitter_variant.url */
+      },
       path: this.$route.path
     });
   }
