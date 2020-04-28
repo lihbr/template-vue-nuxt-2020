@@ -66,11 +66,16 @@ const envConfig = (settings = {}, GLOBAL_CONTENT) => {
   );
   // Application background color
   const APP_BACKGROUND_COLOR = firstTrue(
+    settings.site_background_color,
     process.env.APP_BACKGROUND_COLOR,
     "#fefefe"
   );
   // Application accent color
-  const APP_ACCENT_COLOR = firstTrue(process.env.APP_ACCENT_COLOR, "#111111");
+  const APP_ACCENT_COLOR = firstTrue(
+    settings.site_accent_color,
+    process.env.APP_ACCENT_COLOR,
+    "#111111"
+  );
 
   /**
    * Usage
