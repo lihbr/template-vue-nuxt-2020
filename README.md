@@ -48,7 +48,7 @@ During the process you can also create a `.env` file by copying `.env.example` a
 
 ### Development
 
-#### Without Netlify functions:
+#### Start server without Netlify functions:
 
 To run the project without Netlify functions simply run:
 
@@ -63,7 +63,7 @@ Nuxt development server will be running at `localhost:3000`
 
 <!-- Uncomment is using Netlify functions -->
 
-<!-- #### With Netlify functions:
+<!-- #### Start server with Netlify functions:
 
 If you want the project with Netlify functions available run:
 
@@ -77,6 +77,21 @@ $ npm run dev:netlify
 > Be aware that you need Nuxt server to run on `localhost` host for `netlify dev` to be able to wrap the server.
 
 Nuxt development server will be running with functions at `localhost:8888` -->
+
+#### Plop
+
+Plop is configured on this project to generate regular components as well as pages and layouts one.
+
+To use Plop you need its CLI installed globally, if you don't have it already you can install it this way:
+
+```bash
+# install plop globally with yarn
+$ yarn global add plop
+# or with npm
+$ npm install --global plop
+```
+
+Then the `plop` command will guide you through creating desired components.
 
 ### Build
 
