@@ -20,18 +20,20 @@ export const actions = {
   load({ state, commit, dispatch }) {
     if (state.loaded) return;
 
-    // Load
+    // Actions performed when generating application
     dispatch("content/load");
 
+    // Load finished
     commit("isLoaded");
   },
   init({ state, commit, dispatch }) {
     if (!state.loaded) dispatch("load");
     if (state.inited) return;
 
-    // Init
+    // Actions performed on application mount
     // dispatch("something");
 
+    // Init finished
     commit("isInited");
   },
   pageChanged({ state, dispatch }) {
