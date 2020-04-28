@@ -1,3 +1,4 @@
+/* HEALTH:HIGH smart-link */
 const logger = require("consola").withScope("lihbr:smart-link");
 
 import { mergeData } from "vue-functional-data-merge";
