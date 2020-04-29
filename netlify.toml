@@ -23,6 +23,13 @@
 [build.processing.images]
   compress = true
 
+# Netlify dev config
+[dev]
+  command = "nuxt"
+  port = 8888
+  targetPort = 3000
+  autoLaunch = false
+
 # Deploy from production branch
 [context.production]
 
