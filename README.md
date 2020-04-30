@@ -46,6 +46,8 @@ $ npm install
 
 During the process you can also create a `.env` file by copying `.env.example` and fill it with needed environment variables.
 
+> Please note that the `.env` file also allow you to customize basic settings of the application though it's highly recommended to provide those value through a CMS
+
 ### Development
 
 #### Start server without Netlify functions:
@@ -108,7 +110,7 @@ You'll end up with the built site available at `./dist`
 
 ## Inspiration
 
-- [Link to inpirating stuff](https://rickastley.lihbr.fr)
+- [Link to inspiring stuff](https://rickastley.lihbr.fr)
 
 ## Todo
 
