@@ -1,18 +1,13 @@
 const Color = require("color");
+const alpha = (hexa, alpha = 1) => Color(hexa).alpha(alpha).rgb().toString();
+const lighten = (hexa, lighten = 1) =>
+  Color(hexa).lighten(lighten).rgb().toString();
 
 /**
  * Start generic project config
  */
 const col = 120;
 const baseDuration = 750;
-
-const colors = {
-  black: "#111111",
-  white: "#fefefe"
-};
-const colorOpacityVariants = [20];
-const colorLightenVariants = [20];
-
 /**
  * End generic project config
  */
@@ -51,38 +46,19 @@ module.exports = {
         "monospace"
       ]
     },
-    colors: () => {
-      const finalColors = {
-        none: "transparent",
-        transparent: "transparent",
-        current: "currentColor",
-        inherit: "inherit"
-      };
-
-      for (const color in colors) {
-        const value = colors[color];
-
-        const colorObject = {
-          default: value
-        };
-
-        for (const opacity of colorOpacityVariants) {
-          colorObject[`o-${opacity}`] = Color(value)
-            .alpha(opacity / 100)
-            .rgb()
-            .toString();
-        }
-        for (const lighten of colorLightenVariants) {
-          colorObject[`l-${lighten}`] = Color(value)
-            .lighten(lighten / 100)
-            .rgb()
-            .toString();
-        }
-
-        finalColors[color] = colorObject;
+    colors: {
+      none: "transparent",
+      transparent: "transparent",
+      current: "currentColor",
+      inherit: "inherit",
+      black: {
+        default: "#111111",
+        "o-20": alpha("#111111", 0.2)
+      },
+      white: {
+        default: "#fefefe",
+        "o-20": alpha("#fefefe", 0.2)
       }
-
-      return finalColors;
     },
     fontSize: {
       "3xs": "0.5rem", //   8px
@@ -115,20 +91,6 @@ module.exports = {
       "80": "0.8",
       "90": "0.9",
       "100": "0.99" // prevent extra paint
-    },
-    zIndex: () => {
-      const zIndex = {
-        auto: "auto",
-        "0": 0
-      };
-
-      // Generate negative and positive classes for each
-      [1000, 100, 50, 20, 10, 5, 4, 3, 2, 1].forEach(i => {
-        zIndex[`${i}`] = i;
-        zIndex[`-${i}`] = i * -1;
-      });
-
-      return zIndex;
     },
     // Access from transition-
     transitionProperty: {
@@ -238,8 +200,32 @@ module.exports = {
   },
   variants: {},
   corePlugins: {
+    backgroundOpacity: false,
+    borderOpacity: false,
+    divideColor: false,
+    divideOpacity: false,
+    divideWidth: false,
+    gap: false,
+    gridAutoFlow: false,
+    gridColumn: false,
+    gridColumnStart: false,
+    gridColumnEnd: false,
+    gridRow: false,
+    gridRowStart: false,
+    gridRowEnd: false,
+    gridTemplateColumns: false,
+    gridTemplateRows: false,
     objectFit: false,
-    objectPosition: false
+    objectPosition: false,
+    placeholderOpacity: false,
+    rotate: false,
+    scale: false,
+    skew: false,
+    space: false,
+    textOpacity: false,
+    transform: false,
+    transformOrigin: false,
+    translate: false
   },
   plugins: [
     ({ addBase, addUtilities, theme }) => {
@@ -260,6 +246,17 @@ module.exports = {
       addUtilities(objectFitUtilities, {
         variants: ["responsive"]
       });
+
+      const stackUtilities = {};
+      for (const spacing of [0, 1, 3, 5, 12, 16, 24, 32]) {
+        stackUtilities[
+          `.stack-${spacing} > :not(.stack-exception) + :not(.stack-exception)`
+        ] = {
+          marginTop: `${spacing / 4}rem`
+        };
+      }
+
+      addUtilities(stackUtilities, { variants: ["responsive"] });
     }
   ]
 };
