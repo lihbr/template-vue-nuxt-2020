@@ -5,6 +5,7 @@ module.exports = async () => {
   // Configure application environment
   const env = envConfig(/* settings, CMS_GLOBAL */);
 
+  // Script
   const script = [];
 
   return {
@@ -76,10 +77,11 @@ module.exports = async () => {
       "@nuxtjs/feed",
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
       [
-        "@nuxtjs/google-tag-manager",
+        "@nuxtjs/gtm",
         {
           id: env.GTM_ID,
           pageTracking: true,
+          pageViewEventName: "nuxtRoute",
           respectDoNotTrack: env.GTM_FRIENDLY,
           dev: env.GTM_DEV
         }
