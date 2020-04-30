@@ -1,5 +1,22 @@
-export default async context => {
-  context.pagePayload = async context => {
+import fetch from "isomorphic-unfetch";
+
+export default context => {
+  const handleError = error => {
+    if (context.app && context.app.$logger) {
+      context.app.$logger.error(error);
+    } else {
+      console.error(error);
+    }
+    if (!!error.statusCode) {
+      context.error({ statusCode: error.statusCode });
+    } else if (!!error.status) {
+      context.error({ statusCode: error.status });
+    } else {
+      context.error();
+    }
+  };
+
+  context.$pagePayload = async context => {
     if (context.payload) {
       return { data: context.payload };
     } else {
@@ -15,18 +32,7 @@ export default async context => {
         const data = await response.json();
         return { data };
       } catch (error) {
-        if (context.app && context.app.$logger) {
-          context.app.$logger.log(error);
-        } else {
-          console.log(error);
-        }
-        if (!!error.statusCode) {
-          return context.error({ statusCode: error.statusCode });
-        } else if (!!error.status) {
-          return context.error({ statusCode: error.status });
-        } else {
-          return context.error();
-        }
+        handleError(error);
       }
     }
   };
