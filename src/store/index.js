@@ -21,7 +21,7 @@ export const actions = {
     if (state.loaded) return;
 
     // Actions performed when generating application
-    dispatch("content/load");
+    // dispatch("something");
 
     // Load finished
     commit("isLoaded");
