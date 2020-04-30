@@ -166,7 +166,8 @@ Vue.prototype.$buildHead = ({
     script: [
       {
         hid: "structuredData",
-        innerHTML: JSON.stringify([
+        type: "application/ld+json",
+        json: [
           {
             "@context": "http://schema.org",
             "@type": "WebSite",
@@ -175,8 +176,7 @@ Vue.prototype.$buildHead = ({
             alternateName: APP_NAME
           },
           ...additionalStructuredData
-        ]),
-        type: "application/ld+json"
+        ]
       }
     ]
   };
