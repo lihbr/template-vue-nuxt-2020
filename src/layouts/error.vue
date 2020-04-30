@@ -2,7 +2,7 @@
 <template>
   <div class="__page__error">
     <h1>{{ code }}</h1>
-    <h2>{{ message }}</h2>
+    <h2>{{ message | uc_first }}</h2>
     <smart-link class="underline" to="/">
       Home page
     </smart-link>
@@ -29,6 +29,17 @@ export default {
     message() {
       return this.error.msg /*|| statusMsg[this.code]*/ || unknown;
     }
+  },
+  mounted() {
+    this.$store.dispatch("pageChanged");
+  },
+  head() {
+    return this.$buildHead({
+      title: `${this.code}` || "💐",
+      description: this.$options.filters.uc_first(this.message),
+      metaImage: { og: undefined, tw: undefined },
+      path: this.$route.path
+    });
   }
 };
 </script>
