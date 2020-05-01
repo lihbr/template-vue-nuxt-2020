@@ -13,6 +13,8 @@ const baseDuration = 750;
  */
 
 module.exports = {
+  purge: false,
+  target: "ie11",
   prefix: "",
   important: false,
   separator: ":",

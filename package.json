@@ -39,7 +39,7 @@
     "scrollmagic": "2.0.7",
     "slugify": "1.4.0",
     "stats.js": "0.17.0",
-    "tailwindcss": "1.4.0",
+    "tailwindcss": "1.4.2",
     "vue-functional-data-merge": "3.1.0"
   },
   "devDependencies": {
