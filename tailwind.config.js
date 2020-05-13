@@ -92,7 +92,7 @@ module.exports = {
       "70": "0.7",
       "80": "0.8",
       "90": "0.9",
-      "100": "0.99" // prevent extra paint
+      "100": "1"
     },
     // Access from transition-
     transitionProperty: {
