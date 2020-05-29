@@ -1,16 +1,16 @@
 import fetch from "isomorphic-unfetch";
 
 export default context => {
-  const handleError = error => {
+  const handleError = err => {
     if (context.app && context.app.$logger) {
-      context.app.$logger.error(error);
+      context.app.$logger.error(err);
     } else {
-      console.error(error);
+      console.error(err);
     }
-    if (!!error.statusCode) {
-      context.error({ statusCode: error.statusCode });
-    } else if (!!error.status) {
-      context.error({ statusCode: error.status });
+    if (!!err.statusCode) {
+      context.error({ statusCode: err.statusCode });
+    } else if (!!err.status) {
+      context.error({ statusCode: err.status });
     } else {
       context.error();
     }
@@ -22,7 +22,12 @@ export default context => {
     } else {
       const base = "<%= options.base %>";
       const normalizedPath = context.route.path.replace(/\/+$/, "");
-      const url = `${process.env.APP_URL}${base}${normalizedPath}/index.json`;
+
+      <% if (options.dev) { %>
+        const url = `${process.env.APP_URL}${base}${normalizedPath}/index.json`;
+      <% } else { %>
+        const url = `${base}${normalizedPath}/index.json`;
+      <% } %>
 
       try {
         const response = await fetch(url);
@@ -31,8 +36,8 @@ export default context => {
         }
         const data = await response.json();
         return { data };
-      } catch (error) {
-        handleError(error);
+      } catch (err) {
+        handleError(err);
       }
     }
   };
