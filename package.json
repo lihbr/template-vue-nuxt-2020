@@ -3,7 +3,7 @@
   "version": "2.5.0",
   "description": "A Nuxt.js starter pack to build app with Vue.js",
   "private": true,
-  "author": "lihbr",
+  "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "nuxt",
@@ -64,7 +64,6 @@
     "fibers": "5.0.0",
     "globby": "11.0.0",
     "husky": "4.2.5",
-    "nodemon": "2.0.3",
     "nuxt-svg-loader": "1.2.0",
     "prettier": "2.0.5",
     "sass": "1.26.5",
