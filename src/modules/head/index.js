@@ -18,7 +18,6 @@ module.exports = function (moduleOptions) {
       tw: undefined
     },
     twitterHandle: undefined,
-    script: [],
     backgroundColor: "#fefefe",
     accentColor: "#111111",
     titleFormat: "%page% - %site%",
@@ -58,8 +57,6 @@ module.exports = function (moduleOptions) {
   setGlobal.main.call(this, options);
   // Meta
   setGlobal.meta.call(this, options);
-  // Script
-  setGlobal.script.call(this, options);
   // Link
   setGlobal.link.call(this, options);
 
