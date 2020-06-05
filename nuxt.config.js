@@ -22,7 +22,15 @@ module.exports = async () => {
     /*
      ** Head of the page, handled by head module
      */
-    head: {},
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic&display=fallback"
+        }
+      ]
+    },
 
     /*
      ** Customize the progress-bar color
@@ -61,7 +69,6 @@ module.exports = async () => {
             tw: env.APP_METAIMG_TW
           },
           twitterHandle: env.APP_TWITTER_HANDLE,
-          script,
           backgroundColor: env.APP_BACKGROUND_COLOR,
           accentColor: env.APP_ACCENT_COLOR,
           titleFormat: env.APP_TITLE_FORMAT,
