@@ -7,11 +7,6 @@ module.exports = plop => {
     description: "create a standard component",
     prompts: [
       {
-        type: "input",
-        name: "name",
-        message: "Standard component name:"
-      },
-      {
         type: "list",
         name: "category",
         message: "Component category:",
@@ -38,6 +33,11 @@ module.exports = plop => {
         name: "namespace",
         message: "Component namespace: (optional)",
         filter: trimSlashFilter
+      },
+      {
+        type: "input",
+        name: "name",
+        message: "Standard component name:"
       }
     ],
     actions: data => [
