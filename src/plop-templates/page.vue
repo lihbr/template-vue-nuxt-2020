@@ -1,6 +1,6 @@
 <!-- HEALTH:UNKNOWN __page__{{ kebabCase route }} -->
 <template>
-  <div class="__page__{{ kebabCase route }}" :slices="data.slices">
+  <div class="__page__{{ kebabCase route }}">
     <div class="content">
       {{ pascalCase route }}
     </div>
