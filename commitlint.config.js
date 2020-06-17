@@ -5,7 +5,7 @@ module.exports = {
     "scope-enum": [
       2,
       "always",
-      ["deps", "functions", "datalayer", "modules", "config", "core"]
+      ["core", "modules", "functions", "datalayer", "config", "deps", "misc"]
     ],
     "scope-empty": [2, "never"]
   }
