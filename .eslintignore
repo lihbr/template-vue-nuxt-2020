@@ -2,7 +2,7 @@ src/modules/*/plugin.js
 src/plop-templates/*.vue
 src/static/sw.js
 
-#  .gitignore copy
+# .gitignore copy
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
