@@ -112,7 +112,7 @@ You'll end up with the built site available at `./dist`
 
 ## Inspiration
 
-- [Link to inspiring stuff](https://rickastley.lihbr.fr)
+- [Link to inspiring stuff](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## Todo
 
