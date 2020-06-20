@@ -1,6 +1,6 @@
 <!-- HEALTH:UNKNOWN __page__home -->
 <template>
-  <div class="__page__home" :slices="data.slices">
+  <div class="__page__home">
     <div class="content">
       Home
     </div>
