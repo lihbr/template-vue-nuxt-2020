@@ -55,7 +55,8 @@ module.exports = async function (moduleOptions) {
     src: path.resolve(__dirname, "plugin.js"),
     fileName: "pagePayload.js",
     options: {
-      base: path.posix.join("/", posixPayloadCacheDir)
+      base: path.posix.join("/", posixPayloadCacheDir),
+      dev: this.options.dev
     }
   });
 
