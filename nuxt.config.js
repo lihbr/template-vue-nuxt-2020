@@ -5,9 +5,6 @@ module.exports = async () => {
   // Configure application environment
   const env = envConfig(/* settings, CMS_GLOBAL */);
 
-  // Script
-  const script = [];
-
   return {
     /*
      ** Application mode
