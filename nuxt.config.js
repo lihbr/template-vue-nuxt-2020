@@ -90,7 +90,7 @@ module.exports = async () => {
           pageTracking: true,
           pageViewEventName: "nuxtRoute",
           respectDoNotTrack: env.GTM_FRIENDLY,
-          dev: env.GTM_DEV
+          enabled: !env.DEV
         }
       ],
       [

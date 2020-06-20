@@ -110,5 +110,5 @@ module.exports = async function (moduleOptions) {
     });
   }
 
-  logger.success("Cache module initialized\n");
+  logger.success("Cache module initialized");
 };

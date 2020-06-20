@@ -69,5 +69,5 @@ module.exports = function (moduleOptions) {
     options
   });
 
-  logger.success("Head module initialized\n");
+  logger.success("Head module initialized");
 };

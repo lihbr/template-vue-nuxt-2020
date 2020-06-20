@@ -17,5 +17,5 @@ module.exports = function (moduleOptions) {
     this.options.build.html.minify.minifyJS = false;
   });
 
-  logger.success("Build module initialized\n");
+  logger.success("Build module initialized");
 };

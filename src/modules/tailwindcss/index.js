@@ -57,5 +57,5 @@ module.exports = function (moduleOptions) {
     }
   });
 
-  logger.success("Tailwindcss module initialized\n");
+  logger.success("Tailwindcss module initialized");
 };

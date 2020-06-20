@@ -34,5 +34,5 @@ module.exports = function (moduleOptions) {
     }
   }
 
-  logger.success("Statistics module initialized\n");
+  logger.success("Statistics module initialized");
 };
