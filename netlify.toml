@@ -3,7 +3,7 @@
   # Base directory
   base = ""
   # Build command
-  command = "yarn generate"
+  command = "yarn build && yarn export"
   # Build directory
   publish = "dist/"
   # Serverless Lambda functions

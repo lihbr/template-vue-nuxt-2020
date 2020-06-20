@@ -12,6 +12,11 @@ module.exports = async () => {
     mode: "universal",
 
     /*
+     ** Application target
+     */
+    target: "static",
+
+    /*
      ** Application directory
      */
     srcDir: "src/",
@@ -72,7 +77,7 @@ module.exports = async () => {
           url: env.APP_URL
         }
       ],
-      "~/modules/cache",
+      "~/modules/payload",
       "~/modules/statistics",
       "~/modules/tailwindcss",
       "@nuxtjs/global-components",
@@ -128,10 +133,11 @@ module.exports = async () => {
     },
 
     /*
-     ** Generate
+     ** Export
      */
-    generate: {
+    export: {
       fallback: true,
+      crawler: false,
       routes: [
         {
           route: "/",

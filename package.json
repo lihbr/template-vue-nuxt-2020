@@ -9,9 +9,11 @@
     "dev": "nuxt",
     "predev:netlify": "shx rm -rf ./.nuxt",
     "dev:netlify": "netlify dev",
+    "generate": "nuxt generate",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "export": "nuxt export",
+    "serve": "nuxt serve",
     "lint": "eslint --ext .js,.vue ."
   },
   "engines": {
@@ -32,7 +34,7 @@
     "isomorphic-unfetch": "3.0.0",
     "lodash": "4.17.15",
     "md5": "2.2.1",
-    "nuxt": "2.12.2",
+    "nuxt": "2.13.0",
     "object-fit-images": "3.2.4",
     "prismjs": "1.20.0",
     "qs": "6.9.4",

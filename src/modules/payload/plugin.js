@@ -1,6 +1,6 @@
-import fetch from "isomorphic-unfetch";
+<% if (options.dev) { %>import fetch from "isomorphic-unfetch";
 
-export default context => {
+<% } %>export default context => {
   const handleError = err => {
     if (context.app && context.app.$logger) {
       context.app.$logger.error(err);
@@ -20,25 +20,24 @@ export default context => {
     if (context.payload) {
       return { data: context.payload };
     } else {
+      <% if (options.dev) { %>
       const base = "<%= options.base %>";
       const normalizedPath = context.route.path.replace(/\/+$/, "");
-
-      <% if (options.dev) { %>
-        const url = `${process.env.APP_URL}${base}${normalizedPath}/index.json`;
-      <% } else { %>
-        const url = `${base}${normalizedPath}/index.json`;
-      <% } %>
+      const url = `${process.env.APP_URL}${base}${normalizedPath}`;
 
       try {
         const response = await fetch(url);
         if (!response.ok) {
           throw response; // non-200 code
         }
-        const data = await response.json();
+        const { data } = await response.json();
         return { data };
       } catch (err) {
         handleError(err);
       }
+      <% } else { %>
+      handleError("$pagePayload requires `route.payload` to be set for production!");
+      <% } %>
     }
   };
 };
