@@ -8,11 +8,11 @@
       console.error(err);
     }
     if (!!err.statusCode) {
-      context.error({ statusCode: err.statusCode });
+      context.error({ statusCode: err.statusCode, message: "" });
     } else if (!!err.status) {
-      context.error({ statusCode: err.status });
+      context.error({ statusCode: err.status, message: "" });
     } else {
-      context.error();
+      context.error({ statusCode: 0, message: "" });
     }
   };
 
@@ -36,8 +36,10 @@
         handleError(err);
       }
       <% } else { %>
-      // eslint-disable-next-line
-      context.error({ statusCode: 404 });
+      handleError({
+        statusCode: 404,
+        message: `No payload found for route "${context.route.path}" with $pagePayload function and preview is disabled, throwing 404.`
+      });
       <% } %>
     }
   };
