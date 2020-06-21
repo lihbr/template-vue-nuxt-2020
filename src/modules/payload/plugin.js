@@ -36,7 +36,8 @@
         handleError(err);
       }
       <% } else { %>
-      handleError("$pagePayload requires `route.payload` to be set for production!");
+      // eslint-disable-next-line
+      context.error({ statusCode: 404 });
       <% } %>
     }
   };

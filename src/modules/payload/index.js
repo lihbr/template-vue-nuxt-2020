@@ -81,7 +81,7 @@ module.exports = async function (moduleOptions) {
           };
         } else {
           logger.error(
-            `Payload not found for path: \"${path}\", this will cause a warning in production!`
+            `Payload not found for path: \"${path}\", this will cause throw a 404 in production!`
           );
           res.statusCode = 404;
           body = {
