@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import statusMsg from "~/assets/js/statusMsg.json";
+
 const unknown = "Something happened, but we're taking care of it!";
 
 export default {
@@ -17,17 +19,17 @@ export default {
     error: {
       type: Object,
       default: () => ({
-        code: "Unknown",
+        statusCode: 0,
         message: ""
       })
     }
   },
   computed: {
     code() {
-      return this.error.statusCode || this.error.code;
+      return this.error.statusCode;
     },
     message() {
-      return this.error.msg /*|| statusMsg[this.code]*/ || unknown;
+      return statusMsg[this.code] || unknown;
     }
   },
   mounted() {

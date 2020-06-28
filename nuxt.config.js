@@ -5,14 +5,16 @@ module.exports = async () => {
   // Configure application environment
   const env = envConfig(/* settings, CMS_GLOBAL */);
 
-  // Script
-  const script = [];
-
   return {
     /*
      ** Application mode
      */
     mode: "universal",
+
+    /*
+     ** Application target
+     */
+    target: "static",
 
     /*
      ** Application directory
@@ -75,7 +77,7 @@ module.exports = async () => {
           url: env.APP_URL
         }
       ],
-      "~/modules/cache",
+      "~/modules/payload",
       "~/modules/statistics",
       "~/modules/tailwindcss",
       "@nuxtjs/global-components",
@@ -90,7 +92,7 @@ module.exports = async () => {
           pageTracking: true,
           pageViewEventName: "nuxtRoute",
           respectDoNotTrack: env.GTM_FRIENDLY,
-          dev: env.GTM_DEV
+          enabled: !env.DEV
         }
       ],
       [
@@ -131,10 +133,11 @@ module.exports = async () => {
     },
 
     /*
-     ** Generate
+     ** Export
      */
-    generate: {
+    export: {
       fallback: true,
+      crawler: false,
       routes: [
         {
           route: "/",

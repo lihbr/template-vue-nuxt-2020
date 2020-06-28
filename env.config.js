@@ -118,8 +118,6 @@ const envConfig = (settings = {}, GLOBAL_CONTENT) => {
       return firstTrue(process.env.GTM_FRIENDLY, true);
     }
   })();
-  // Tell Google Tag Manager module that it is running in development mode
-  const GTM_DEV = firstTrue(process.env.GTM_DEV, DEV);
 
   /**
    * Misc
@@ -155,7 +153,6 @@ const envConfig = (settings = {}, GLOBAL_CONTENT) => {
 
     GTM_ID,
     GTM_FRIENDLY,
-    GTM_DEV,
 
     CONSOLA_LEVEL,
 
