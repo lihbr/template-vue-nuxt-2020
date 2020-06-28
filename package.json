@@ -1,6 +1,6 @@
 {
   "name": "template-vue-nuxt",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "A Nuxt.js starter pack to build app with Vue.js",
   "private": true,
   "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
