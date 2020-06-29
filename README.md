@@ -103,9 +103,9 @@ To build the project simply run:
 
 ```bash
 # generate static project with yarn
-$ yarn generate
+$ yarn build && yarn export
 # or with npm
-$ npm run generate
+$ npm run build && npm run export
 ```
 
 You'll end up with the built site available at `./dist`
