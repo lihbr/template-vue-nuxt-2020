@@ -16,7 +16,7 @@ module.exports = plop => {
             value: "controls"
           },
           { name: "display (visual components)", value: "display" },
-          { name: "layout (layout components)", value: "layout" },
+          { name: "layouts (layout components)", value: "layouts" },
           {
             name: "partials (application's partials components)",
             value: "partials"
