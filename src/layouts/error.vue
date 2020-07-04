@@ -3,7 +3,12 @@
   <div class="__page__error">
     <h1>{{ code }}</h1>
     <h2>{{ message | uc_first }}</h2>
-    <smart-link class="underline" href="/" :external="$route.path === '/'">
+    <smart-link
+      class="underline"
+      href="/"
+      :external="$route.path === '/'"
+      title="Get back to home"
+    >
       Home page
     </smart-link>
   </div>
