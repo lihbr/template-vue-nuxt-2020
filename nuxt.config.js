@@ -91,7 +91,7 @@ module.exports = async () => {
         "@nuxtjs/pwa",
         {
           workbox: {
-            offlineAnalytics: !!env.GTM_ID && true,
+            offlineAnalytics: !!env.GTM_ID,
             // Register image CDN here
             runtimeCaching: [
               // {

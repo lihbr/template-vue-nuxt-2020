@@ -8,7 +8,7 @@ const get = require("lodash/get");
  * @return {any} - element found
  */
 const firstTrue = (...options) =>
-  options.find(i => !!i) || options[options.length - 1];
+  options.find(i => i) || options[options.length - 1];
 
 /**
  * Configure app shared env variables

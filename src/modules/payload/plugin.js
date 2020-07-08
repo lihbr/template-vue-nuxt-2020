@@ -7,9 +7,9 @@
     } else {
       console.error(err);
     }
-    if (!!err.statusCode) {
+    if (err.statusCode) {
       context.error({ statusCode: err.statusCode, message: "" });
-    } else if (!!err.status) {
+    } else if (err.status) {
       context.error({ statusCode: err.status, message: "" });
     } else {
       context.error({ statusCode: 0, message: "" });
