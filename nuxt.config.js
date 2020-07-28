@@ -125,11 +125,11 @@ module.exports = async () => {
     },
 
     /*
-     ** Export
+     ** Generate
      */
-    export: {
-      fallback: true,
+    generate: {
       crawler: false,
+      fallback: true,
       routes: [
         {
           route: "/",
