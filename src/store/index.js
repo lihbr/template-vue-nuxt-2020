@@ -39,7 +39,7 @@ export const actions = {
   pageChanged({ state, dispatch }) {
     if (!state.inited) dispatch("init");
 
-    // Page changed
+    // Actions performed on page change
     // dispatch("something");
   }
 };
