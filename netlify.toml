@@ -61,7 +61,7 @@
 #   force = true
 
 # [[redirects]]
-#   from = "https://SITE_URL.netlify.com/*"
+#   from = "https://<SITE_NAME>.netlify.app/*"
 #   to = "https://example.com/:splat"
 #   status = 301
 #   force = true
