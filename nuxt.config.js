@@ -167,6 +167,18 @@ module.exports = async () => {
     server: {
       host: env.APP_HOST,
       port: env.APP_PORT
+    },
+
+    /*
+     ** Build
+     */
+    build: {
+      html: {
+        minify: {
+          minifyCSS: false,
+          minifyJS: false
+        }
+      }
     }
   };
 };
