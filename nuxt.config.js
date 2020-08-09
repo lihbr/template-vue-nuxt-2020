@@ -70,7 +70,6 @@ module.exports = async () => {
      ** Nuxt.js build modules
      */
     buildModules: [
-      "~/modules/build",
       [
         "~/modules/head",
         {
