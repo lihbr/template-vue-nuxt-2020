@@ -57,13 +57,6 @@ module.exports = async () => {
     css: ["typeface-roboto", "~/assets/sass/style.sass"],
 
     /*
-     ** Style resources
-     */
-    styleResources: {
-      sass: "~/assets/sass/core.sass"
-    },
-
-    /*
      ** Plugins to load before mounting the App
      */
     plugins: ["~/plugins/logger", "~/plugins/filters"],
@@ -106,7 +99,6 @@ module.exports = async () => {
         }
       ],
       "@nuxtjs/global-components",
-      "@nuxtjs/style-resources",
       "@nuxtjs/feed",
       [
         "@nuxtjs/sitemap",
