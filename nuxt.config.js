@@ -19,7 +19,7 @@ module.exports = async () => {
     /*
      ** Build target
      */
-    modern: "client",
+    modern: env.DEV ? false : "client",
 
     /*
      ** Application directory
@@ -97,8 +97,14 @@ module.exports = async () => {
       ],
       "~/modules/payload",
       "~/modules/statistics",
-      "~/modules/tailwindcss",
       "@nuxtjs/eslint-module",
+      [
+        "@nuxtjs/tailwindcss",
+        {
+          configPath: "~~/tailwind.config.js",
+          exposeConfig: false
+        }
+      ],
       "@nuxtjs/global-components",
       "@nuxtjs/style-resources",
       "@nuxtjs/feed",
