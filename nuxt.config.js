@@ -17,9 +17,29 @@ module.exports = async () => {
     target: "static",
 
     /*
+     ** Build target
+     */
+    modern: "client",
+
+    /*
      ** Application directory
      */
     srcDir: "src/",
+
+    /*
+     ** Generate
+     */
+    generate: {
+      cache: {},
+      crawler: false,
+      fallback: true,
+      routes: [
+        {
+          route: "/",
+          payload: {}
+        }
+      ]
+    },
 
     /*
      ** Head of the page, handled by head module
@@ -35,6 +55,13 @@ module.exports = async () => {
      ** Global CSS
      */
     css: ["typeface-roboto", "~/assets/sass/style.sass"],
+
+    /*
+     ** Style resources
+     */
+    styleResources: {
+      sass: "~/assets/sass/core.sass"
+    },
 
     /*
      ** Plugins to load before mounting the App
@@ -74,8 +101,15 @@ module.exports = async () => {
       "@nuxtjs/eslint-module",
       "@nuxtjs/global-components",
       "@nuxtjs/style-resources",
-      "@nuxtjs/sitemap",
       "@nuxtjs/feed",
+      [
+        "@nuxtjs/sitemap",
+        {
+          hostname: env.APP_URL,
+          gzip: true,
+          exclude: []
+        }
+      ],
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
       [
         "@nuxtjs/gtm",
@@ -91,11 +125,13 @@ module.exports = async () => {
         "@nuxtjs/pwa",
         {
           workbox: {
+            clientsClaim: false,
             offlineAnalytics: !!env.GTM_ID,
             // Register image CDN here
             runtimeCaching: [
               // {
-              //   urlPattern: `https://example.com/.*`
+              //   urlPattern: `https://example.com/.*`,
+              //   handler: "networkFirst"
               // }
             ]
           },
@@ -116,36 +152,6 @@ module.exports = async () => {
       ],
       "nuxt-svg-loader"
     ],
-
-    /*
-     ** Style resources
-     */
-    styleResources: {
-      sass: "~/assets/sass/core.sass"
-    },
-
-    /*
-     ** Generate
-     */
-    generate: {
-      crawler: false,
-      fallback: true,
-      routes: [
-        {
-          route: "/",
-          payload: {}
-        }
-      ]
-    },
-
-    /*
-     ** Sitemap
-     */
-    sitemap: {
-      hostname: env.APP_URL,
-      gzip: true,
-      exclude: []
-    },
 
     /*
      ** Feed
