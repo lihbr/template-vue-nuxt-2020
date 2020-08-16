@@ -134,10 +134,10 @@ module.exports = async () => {
           },
           meta: false,
           icon: {
-            accessibleIcons: false
+            plugin: false
           },
           manifest: {
-            // display: "browser", // disable "Add to Home Screen" button
+            display: "browser", // disable "Add to Home Screen" button
             lang: env.APP_LANG,
             name: env.APP_NAME,
             short_name: env.APP_NAME,
