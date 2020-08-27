@@ -31,7 +31,7 @@
     "is-mobile": "2.2.2",
     "isomorphic-unfetch": "3.0.0",
     "lodash": "4.17.20",
-    "nuxt": "2.14.2",
+    "nuxt": "2.14.4",
     "object-fit-images": "3.2.4",
     "scrollmagic": "2.0.7",
     "typeface-roboto": "0.0.75",
@@ -46,9 +46,9 @@
     "@nuxtjs/global-components": "0.6.1",
     "@nuxtjs/gtm": "2.3.2",
     "@nuxtjs/netlify-files": "1.2.0",
-    "@nuxtjs/pwa": "3.0.0",
+    "@nuxtjs/pwa": "3.0.2",
     "@nuxtjs/sitemap": "2.4.0",
-    "@nuxtjs/tailwindcss": "3.0.0",
+    "@nuxtjs/tailwindcss": "3.0.2",
     "babel-eslint": "10.1.0",
     "eslint": "7.7.0",
     "eslint-config-prettier": "6.11.0",
@@ -60,7 +60,7 @@
     "nuxt-svg-loader": "1.2.0",
     "prettier": "2.0.5",
     "sass": "1.26.10",
-    "sass-loader": "9.0.3",
+    "sass-loader": "10.0.1",
     "shx": "0.3.2"
   }
 }
