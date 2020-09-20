@@ -66,7 +66,7 @@ module.exports = plop => {
       {
         type: "input",
         name: "param",
-        // eslint-disable-next-line
+        /* eslint-disable-next-line prettier/prettier */
         message: "Page route param: (default to \"index\")",
         default: "index"
       }

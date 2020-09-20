@@ -14,7 +14,8 @@ const FRAMEWORK_LINK = "nuxt-link";
  */
 const isInternal = ({ external, internal, href }) => {
   if (external && internal) {
-    logger.warn(`props "external" and "internal" are both true and conflicting with each other, giving priority to "external"`); // eslint-disable-line
+    /* eslint-disable-next-line prettier/prettier */
+    logger.warn("props \"external\" and \"internal\" are both true and conflicting with each other, giving priority to \"external\"");
     return false;
   }
 

@@ -34,7 +34,7 @@ module.exports = function (moduleOptions) {
    */
   if (typeof this.options.head === "function") {
     return logger.fatal(
-      // eslint-disable-next-line
+      /* eslint-disable-next-line prettier/prettier */
       "\"head\" is provided as a function which is not supported by head module, disabling module"
     );
   }
@@ -43,7 +43,7 @@ module.exports = function (moduleOptions) {
   for (const key of mandatoryOptionsKeys) {
     if (!options[key]) {
       return logger.fatal(
-        // eslint-disable-next-line
+        /* eslint-disable-next-line prettier/prettier */
         `"options.${key}" is required for head module to work, disabling module`
       );
     }

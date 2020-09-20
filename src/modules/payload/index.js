@@ -16,19 +16,19 @@ module.exports = async function (moduleOptions) {
    */
   if (!this.options.generate) {
     return logger.fatal(
-      // eslint-disable-next-line
+      /* eslint-disable-next-line prettier/prettier */
       "\"generate\" object is not defined in \"nuxt.config.js\", disabling module"
     );
   } else if (!this.options.generate.routes) {
     return logger.fatal(
-      // eslint-disable-next-line
+      /* eslint-disable-next-line prettier/prettier */
       "\"generate.routes\" array is not defined in \"nuxt.config.js\", disabling module"
     );
   }
 
   if (!this.options.generate.fallback) {
     logger.warn(
-      // eslint-disable-next-line
+      /* eslint-disable-next-line prettier/prettier */
       "\"generate.fallback\" should most likely be set to \"true\" for production"
     );
   }

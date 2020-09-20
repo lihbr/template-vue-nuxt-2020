@@ -51,7 +51,6 @@ module.exports = {
       ]
     },
     colors: {
-      none: "transparent",
       transparent: "transparent",
       current: "currentColor",
       inherit: "inherit",
@@ -240,11 +239,13 @@ module.exports = {
       const objectFitUtilities = {
         ".object-cover": {
           objectFit: "cover",
-          fontFamily: '"object-fit: cover"' // eslint-disable-line
+          /* eslint-disable-next-line prettier/prettier */
+          fontFamily: "\"object-fit: cover\""
         },
         ".object-contain": {
           objectFit: "contain",
-          fontFamily: '"object-fit: contain"' // eslint-disable-line
+          /* eslint-disable-next-line prettier/prettier */
+          fontFamily: "\"object-fit: contain\""
         }
       };
       addUtilities(objectFitUtilities, {
